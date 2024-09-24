@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavController
-import com.example.hackwithpython.BackgroundColor
+import com.example.hackwithpython.HackerBlack
 import com.example.hackwithpython.HackerGreen
 
 
@@ -24,7 +24,7 @@ fun lessonsScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("LESSONS") },
+                title = { Text("Lessons", style = MaterialTheme.typography.titleMedium ) },
                 backgroundColor = HackerGreen
             )
         },
@@ -41,7 +41,7 @@ fun lessonsPart(navController: NavController, padding: Modifier) {
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
-            .background(color = BackgroundColor)
+            .background(color = HackerBlack)
             .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.Start

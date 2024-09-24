@@ -13,10 +13,10 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 
 val HackerGreen = Color(11, 91, 21) // Bright green for buttons
-val BackgroundColor = Color(0, 0, 0) // Black background
-val TextColor = Color(233, 245, 219) // White text
+val HackerBlack = Color(0, 0, 0) // Black background
+val HackerWhite = Color(233, 245, 219) // White text
 
-val gradientBackground = Brush.linearGradient(listOf(BackgroundColor, HackerGreen))
+val gradientBackground = Brush.linearGradient(listOf(HackerBlack, HackerGreen))
 
 @Composable
 fun homeScreen(navController: NavController, modifier: Modifier = Modifier) {
@@ -34,7 +34,7 @@ fun homeScreen(navController: NavController, modifier: Modifier = Modifier) {
                 text = "Hack with Python",
                 style = MaterialTheme.typography.headlineLarge,
                 fontWeight = FontWeight.Bold,
-                color = TextColor,
+                color = HackerWhite,
                 modifier = Modifier.padding(15.dp)
             )
 
@@ -42,7 +42,7 @@ fun homeScreen(navController: NavController, modifier: Modifier = Modifier) {
                 text = "Learn the art of hacking using Python through practical exercises and tutorials.",
                 style = MaterialTheme.typography.bodyMedium,
                 textAlign = androidx.compose.ui.text.style.TextAlign.Center,
-                color = TextColor,
+                color = HackerWhite,
                 modifier = Modifier.padding(15.dp)
             )
         }
@@ -53,7 +53,7 @@ fun homeScreen(navController: NavController, modifier: Modifier = Modifier) {
                 .height(56.dp),
             colors = ButtonDefaults.buttonColors(containerColor = HackerGreen)
         ) {
-            Text(text = "Start Learning", color = BackgroundColor)
+            Text(text = "Start Learning", color = HackerBlack)
         }
 
         OutlinedButton(
@@ -62,7 +62,7 @@ fun homeScreen(navController: NavController, modifier: Modifier = Modifier) {
                 .height(56.dp),
             colors = ButtonDefaults.buttonColors(containerColor = HackerGreen)
         ) {
-            Text(text = "View Projects", color = BackgroundColor)
+            Text(text = "View Projects", color = HackerBlack)
         }
     }
 }

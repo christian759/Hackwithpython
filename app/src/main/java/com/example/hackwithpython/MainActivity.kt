@@ -8,6 +8,7 @@ import com.example.hackwithpython.lessons.*
 import com.example.hackwithpython.lessons.lessonsScreen
 import com.example.hackwithpython.ui.theme.HackWithPythonTheme
 import androidx.activity.ComponentActivity
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
@@ -43,10 +44,10 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {
-    BottomNavigation {
+    BottomNavigation(modifier = Modifier.background(HackerBlack)) {
         val currentDestination = navController.currentBackStackEntryAsState().value?.destination?.route
         BottomNavigationItem(
-            icon = { Icon(Icons.Default.Home, contentDescription = "Home") },
+            icon = { Icon(Icons.Default.Home, contentDescription = "Home", m)},
             label = { Text("Home") },
             selected = currentDestination == "home",
             onClick = { navController.navigate("home") }
