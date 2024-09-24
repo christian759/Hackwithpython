@@ -208,5 +208,12 @@ fun Lesson8Screen(navController: NavController) {
             textAlign = TextAlign.Start,
             color = MaterialTheme.colorScheme.onBackground
         )
+
+        Spacer(modifier = Modifier.height(32.dp))
+
+        // Button to navigate to the next lesson
+        Button(onClick = { navController.navigate("lesson9") }) {
+            Text(text = "Next Lesson: Interacting with Databases")
+        }
     }
 }

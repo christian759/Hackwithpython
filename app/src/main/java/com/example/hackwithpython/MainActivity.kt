@@ -79,6 +79,7 @@ fun NavigationGraph(navController: NavHostController, modifier: Modifier = Modif
         composable("lesson6") { Lesson6Screen(navController) }
         composable("lesson7") { Lesson7Screen(navController) }
         composable("lesson8") { Lesson8Screen(navController) }
+        composable("lesson9") { Lesson9Screen(navController) }
         composable("projects") { ProjectScreen(navController) }
     }
 }

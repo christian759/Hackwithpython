@@ -5,7 +5,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.TopAppBar
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,8 +18,25 @@ import androidx.navigation.NavController
 import com.example.hackwithpython.BackgroundColor
 import com.example.hackwithpython.HackerGreen
 
+
 @Composable
 fun lessonsScreen(navController: NavController) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("LESSONS") },
+                backgroundColor = HackerGreen
+            )
+        },
+        content = { padding ->
+            lessonsPart(navController, Modifier.padding(padding))
+
+        }
+    )
+}
+
+@Composable
+fun lessonsPart(navController: NavController, padding: Modifier) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -27,13 +46,6 @@ fun lessonsScreen(navController: NavController) {
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.Start
     ) {
-        Text(
-            text = "Lessons",
-            style = MaterialTheme.typography.headlineLarge,
-            modifier = Modifier.padding(bottom = 16.dp),
-            color = HackerGreen
-        )
-
         for (lesson in lessons) {
             lessonItem(lesson) {
                 navController.navigate("lesson${lesson.id}") // Navigate to lessonX
