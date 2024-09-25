@@ -18,6 +18,7 @@ import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.internal.composableLambdaInstance
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
@@ -86,6 +87,19 @@ fun NavigationGraph(navController: NavHostController, modifier: Modifier = Modif
         composable("lesson7") { Lesson7Screen(navController) }
         composable("lesson8") { Lesson8Screen(navController) }
         composable("lesson9") { Lesson9Screen(navController) }
+        composable("lesson10") { Lesson10Screen(navController) }
+        composable("lesson11") { Lesson11Screen(navController) }
+        composable("lesson12") { Lesson12Screen(navController) }
+        composable("lesson13") { Lesson13Screen(navController) }
+        composable("lesson14") { Lesson14Screen(navController) }
+        composable("lesson15") { Lesson15Screen(navController) }
+        composable("lesson16") { Lesson16Screen(navController) }
+        composable("lesson17") { Lesson17Screen(navController) }
+        composable("lesson18") { Lesson18Screen(navController) }
+        composable("lesson19") { Lesson19Screen(navController) }
+        composable("lesson20") { Lesson20Screen(navController) }
+
+
         composable("projects") { ProjectScreen(navController) }
     }
 }

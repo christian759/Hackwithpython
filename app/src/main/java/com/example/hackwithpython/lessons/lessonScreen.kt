@@ -79,9 +79,9 @@ val lessons = listOf(
     Lesson(1, "Introduction to Hacking", "Overview of hacking concepts and ethics."),
     Lesson(2, "Networking", "Diving deeper into networking"),
     Lesson(3, "Basics of Python Programming", "Introduction to Python syntax and basic programming concepts."),
-    Lesson(4, "Python setup", "downloading and installing Python"),
+    Lesson(4, "Python setup", "Downloading and installing Python"),
     Lesson(5, "Web Scraping with Python", "Techniques for extracting data from websites using BeautifulSoup."),
-    Lesson(6, "Advanced web Scraping", "Diving deeper into web scraping"),
+    Lesson(6, "Advanced Web Scraping", "Diving deeper into web scraping"),
     Lesson(7, "Creating a Basic Port Scanner", "Building a simple port scanner using Python's socket library."),
     Lesson(8, "Exploiting Web Vulnerabilities", "Understanding common web vulnerabilities (e.g., SQL injection)."),
     Lesson(9, "Password Cracking Techniques", "Methods for cracking weak passwords using Python."),
@@ -90,5 +90,11 @@ val lessons = listOf(
     Lesson(12, "Introduction to Malware Analysis", "Basics of analyzing and understanding malware."),
     Lesson(13, "Building a Simple Keylogger", "Creating a basic keylogger to capture keystrokes."),
     Lesson(14, "Ethical Hacking and Penetration Testing", "Conducting penetration tests ethically and legally."),
-    Lesson(15, "Resources for Further Learning", "Recommended books, websites, and courses to continue learning.")
+    Lesson(15, "Social Engineering Techniques", "Understanding psychological manipulation to exploit human behavior."),
+    Lesson(16, "Web Application Security Testing", "Advanced techniques for testing web application security."),
+    Lesson(17, "Reverse Engineering Software", "Analyzing software to understand its components and functionalities."),
+    Lesson(18, "Exploit Development", "Creating and testing exploits for software vulnerabilities."),
+    Lesson(19, "Wireless Network Hacking", "Techniques for exploiting weaknesses in wireless networks (Wi-Fi)."),
+    Lesson(20, "Cybersecurity Frameworks and Compliance", "Overview of major cybersecurity frameworks and compliance regulations.")
 )
+

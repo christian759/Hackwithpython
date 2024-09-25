@@ -1,7 +1,10 @@
 package com.example.hackwithpython.lessons
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -366,5 +369,11 @@ fun Lesson9Screen(navController: NavHostController) {
             """.trimIndent(),
             modifier = Modifier.padding(vertical = 8.dp)
         )
+        Spacer(modifier = Modifier.height(32.dp))
+
+        // Button to navigate to the next lesson
+        Button(onClick = { navController.navigate("lesson10") }) {
+            Text(text = "Next Lesson: Interacting with Databases")
+        }
     }
 }
