@@ -47,19 +47,22 @@ fun BottomNavigationBar(navController: NavHostController) {
     BottomNavigation(modifier = Modifier.background(HackerBlack)) {
         val currentDestination = navController.currentBackStackEntryAsState().value?.destination?.route
         BottomNavigationItem(
-            icon = { Icon(Icons.Default.Home, contentDescription = "Home", m)},
+            icon = { Icon(imageVector = Icons.Default.Home, contentDescription = "Home",
+                modifier = Modifier.background(HackerGreen))},
             label = { Text("Home") },
             selected = currentDestination == "home",
             onClick = { navController.navigate("home") }
         )
         BottomNavigationItem(
-            icon = { Icon(Icons.Filled.Book, contentDescription = "Lessons") },
+            icon = { Icon(imageVector = Icons.Filled.Book, contentDescription = "Lessons",
+                modifier = Modifier.background(HackerGreen)) },
             label = { Text("Lessons") },
             selected = currentDestination == "lessons",
             onClick = { navController.navigate("lessons") }
         )
         BottomNavigationItem(
-            icon = { Icon(Icons.Default.Work, contentDescription = "Projects") },
+            icon = { Icon(imageVector = Icons.Default.Work, contentDescription = "Projects",
+                   modifier = Modifier.background(HackerGreen)) },
             label = { Text("Projects") },
             selected = currentDestination == "projects",
             onClick = { navController.navigate("projects") }
@@ -71,6 +74,8 @@ fun BottomNavigationBar(navController: NavHostController) {
 fun NavigationGraph(navController: NavHostController, modifier: Modifier = Modifier) {
     NavHost(navController, startDestination = "home", modifier = modifier) {
         composable("home") { homeScreen(navController) }
+
+        // lesson pages
         composable("lessons") { lessonsScreen(navController) }
         composable("lesson1") { Lesson1Screen(navController) }
         composable("lesson2") { Lesson2Screen(navController) }

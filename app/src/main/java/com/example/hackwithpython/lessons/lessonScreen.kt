@@ -3,20 +3,18 @@ package com.example.hackwithpython.lessons
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.TopAppBar
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.*
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavController
 import com.example.hackwithpython.HackerBlack
 import com.example.hackwithpython.HackerGreen
+import com.example.hackwithpython.HackerWhite
 
 
 @Composable
@@ -24,8 +22,8 @@ fun lessonsScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Lessons", style = MaterialTheme.typography.titleMedium ) },
-                backgroundColor = HackerGreen
+                title = { Text("Lessons", color = HackerBlack)},
+                backgroundColor = HackerWhite
             )
         },
         content = { padding ->
@@ -36,21 +34,44 @@ fun lessonsScreen(navController: NavController) {
 }
 
 @Composable
-fun lessonsPart(navController: NavController, padding: Modifier) {
-    Column(
-        modifier = Modifier
+fun lessonsPart(navController: NavController, modifier: Modifier = Modifier) {
+    LazyColumn(
+        modifier = modifier
             .fillMaxSize()
             .padding(16.dp)
-            .background(color = HackerBlack)
-            .verticalScroll(rememberScrollState()),
-        verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.Start
+            .background(color = HackerBlack),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        for (lesson in lessons) {
-            lessonItem(lesson) {
-                navController.navigate("lesson${lesson.id}") // Navigate to lessonX
-            }
-            Spacer(modifier = Modifier.height(8.dp))
+        items(lessons.size){ index ->
+            lessonItem(lesson = lessons[index], navController = navController)
+        }
+    }
+}
+
+
+@Composable
+fun lessonItem(lesson: Lesson, navController: NavController) {
+    Card(
+        elevation = 4.dp,
+        modifier = Modifier.fillMaxWidth(),
+        backgroundColor = HackerGreen
+    ) {
+        Column(
+            modifier = Modifier
+                .padding(16.dp)
+                .clickable(onClick = {navController.navigate("Lesson${lesson.id}")} ),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Text(
+                text = lesson.title,
+                style = MaterialTheme.typography.h6,
+                color = HackerGreen
+            )
+            Text(
+                text = lesson.description,
+                style = MaterialTheme.typography.body2,
+                color = HackerBlack
+            )
         }
     }
 }
@@ -72,24 +93,3 @@ val lessons = listOf(
     Lesson(14, "Ethical Hacking and Penetration Testing", "Conducting penetration tests ethically and legally."),
     Lesson(15, "Resources for Further Learning", "Recommended books, websites, and courses to continue learning.")
 )
-
-@Composable
-fun lessonItem(lesson: Lesson, onClick: () -> Unit) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(onClick = onClick)
-            .padding(8.dp)
-    ) {
-        Text(
-            text = lesson.title,
-            style = MaterialTheme.typography.bodyLarge,
-            fontWeight = FontWeight.Bold,
-            color = HackerGreen
-        )
-        Text(
-            text = lesson.description,
-            style = MaterialTheme.typography.bodyMedium
-        )
-    }
-}
