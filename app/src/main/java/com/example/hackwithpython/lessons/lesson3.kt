@@ -154,7 +154,7 @@ fun Lesson3Screen(navController: NavController) {
         )
 
         Button(onClick = { navController.navigate("lesson4") }) {
-            Text(text = "Back to Lessons")
+            Text(text = "Next Lesson")
         }
     }
 }

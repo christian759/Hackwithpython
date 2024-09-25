@@ -4,6 +4,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -14,7 +16,8 @@ import androidx.navigation.NavHostController
 
 @Composable
 fun Lesson9Screen(navController: NavHostController) {
-    Column(modifier = Modifier.padding(16.dp)) {
+    Column(modifier = Modifier.padding(16.dp)
+            .verticalScroll(rememberScrollState()),) {
         Text(
             text = "Lesson 9: Exploiting Web Vulnerabilities",
             fontWeight = FontWeight.Bold,
@@ -373,7 +376,7 @@ fun Lesson9Screen(navController: NavHostController) {
 
         // Button to navigate to the next lesson
         Button(onClick = { navController.navigate("lesson10") }) {
-            Text(text = "Next Lesson: Interacting with Databases")
+            Text(text = "Next Lesson")
         }
     }
 }

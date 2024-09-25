@@ -244,7 +244,7 @@ fun Lesson6Screen(navController: NavController) {
 
         // Button to navigate to next lesson
         Button(onClick = { navController.navigate("lesson7") }) {
-            Text(text = "Next Lesson: Working with APIs")
+            Text(text = "Next Lesson")
         }
     }
 }

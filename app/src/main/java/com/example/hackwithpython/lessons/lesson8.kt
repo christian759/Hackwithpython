@@ -213,7 +213,7 @@ fun Lesson8Screen(navController: NavController) {
 
         // Button to navigate to the next lesson
         Button(onClick = { navController.navigate("lesson9") }) {
-            Text(text = "Next Lesson: Interacting with Databases")
+            Text(text = "Next Lesson")
         }
     }
 }

@@ -3,6 +3,8 @@ package com.example.hackwithpython.lessons
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.ui.Modifier
 import androidx.compose.runtime.Composable
@@ -12,7 +14,8 @@ import androidx.navigation.NavController
 
 @Composable
 fun Lesson11Screen(navController: NavController) {
-    Column(modifier = Modifier.padding(16.dp)) {
+    Column(modifier = Modifier.padding(16.dp)
+            .verticalScroll(rememberScrollState()),) {
         Text(
             text = "Lesson 11: Automating Tasks with Python",
             fontWeight = FontWeight.Bold,
@@ -258,8 +261,8 @@ fun Lesson11Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(32.dp))
 
         // Button to navigate to the next lesson
-        Button(onClick = { navController.navigate("lesson11") }) {
-            Text(text = "Next Lesson: Interacting with Databases")
+        Button(onClick = { navController.navigate("lesson12") }) {
+            Text(text = "Next Lesson")
         }
     }
 }

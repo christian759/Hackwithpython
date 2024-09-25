@@ -77,14 +77,14 @@ fun lessonItem(lesson: Lesson, navController: NavController) {
 
 val lessons = listOf(
     Lesson(1, "Introduction to Hacking", "Overview of hacking concepts and ethics."),
-    Lesson(2, "Networking", "Diving deeper into networking"),
+    Lesson(2, "Understanding Networks", "Diving deeper into networking"),
     Lesson(3, "Basics of Python Programming", "Introduction to Python syntax and basic programming concepts."),
     Lesson(4, "Python setup", "Downloading and installing Python"),
     Lesson(5, "Web Scraping with Python", "Techniques for extracting data from websites using BeautifulSoup."),
     Lesson(6, "Advanced Web Scraping", "Diving deeper into web scraping"),
-    Lesson(7, "Creating a Basic Port Scanner", "Building a simple port scanner using Python's socket library."),
-    Lesson(8, "Exploiting Web Vulnerabilities", "Understanding common web vulnerabilities (e.g., SQL injection)."),
-    Lesson(9, "Password Cracking Techniques", "Methods for cracking weak passwords using Python."),
+    Lesson(7, "Working with APIs", "explore how to interact with APIs effectively"),
+    Lesson(8, "Penetration Testing Basics", "finding vulnerabilities in computer systems"),
+    Lesson(9, "Exploiting Web Vulnerabilities", "exploiting vulnerabilities on web pages"),
     Lesson(10, "Using Python for Network Sniffing", "Capturing and analyzing network packets with Scapy."),
     Lesson(11, "Automating Tasks with Python", "Writing scripts to automate repetitive tasks."),
     Lesson(12, "Introduction to Malware Analysis", "Basics of analyzing and understanding malware."),
