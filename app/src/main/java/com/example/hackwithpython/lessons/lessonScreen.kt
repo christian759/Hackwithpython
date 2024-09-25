@@ -27,19 +27,18 @@ fun lessonsScreen(navController: NavController) {
             )
         },
         content = { padding ->
-            lessonsPart(navController, Modifier.padding(padding))
-
+            lessonsPart(navController, Modifier.padding(padding).background(HackerWhite))
         }
     )
 }
 
 @Composable
-fun lessonsPart(navController: NavController, modifier: Modifier = Modifier) {
+fun lessonsPart(navController: NavController, modifier: Modifier) {
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
             .padding(16.dp)
-            .background(color = HackerBlack),
+            .background(color = HackerWhite),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         items(lessons.size){ index ->
