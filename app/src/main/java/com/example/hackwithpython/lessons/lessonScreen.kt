@@ -22,7 +22,7 @@ fun lessonsScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Lessons", color = HackerBlack)},
+                title = { Text("Lessons", color = HackerBlack, style = MaterialTheme.typography.h5)},
                 backgroundColor = HackerWhite
             )
         },
@@ -64,7 +64,7 @@ fun lessonItem(lesson: Lesson, navController: NavController) {
             Text(
                 text = lesson.title,
                 style = MaterialTheme.typography.h6,
-                color = HackerGreen
+                color = HackerBlack
             )
             Text(
                 text = lesson.description,

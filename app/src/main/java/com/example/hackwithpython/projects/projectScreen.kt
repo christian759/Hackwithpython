@@ -1,6 +1,7 @@
 package com.example.hackwithpython.projects
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
@@ -18,7 +19,7 @@ fun ProjectScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Hacking Projects", color = HackerBlack)},
+                title = { Text("Projects", color = HackerBlack, style = MaterialTheme.typography.h5 )},
                 backgroundColor = HackerWhite
             )
         },
@@ -47,7 +48,8 @@ fun ProjectList(navController: NavController, modifier: Modifier = Modifier) {
 fun ProjectItem(project: HackingProject, navController: NavController) {
     Card(
         elevation = 4.dp,
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth()
+                .clickable(onClick = {navController.navigate("project${project.id}")} ),
         backgroundColor = HackerGreen
     ) {
         Column(
@@ -57,7 +59,7 @@ fun ProjectItem(project: HackingProject, navController: NavController) {
             Text(
                 text = project.name,
                 style = MaterialTheme.typography.h6,
-                color = HackerGreen
+                color = HackerBlack
             )
             Text(
                 text = project.description,

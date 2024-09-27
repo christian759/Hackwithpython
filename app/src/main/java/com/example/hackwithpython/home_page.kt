@@ -57,7 +57,7 @@ fun homeScreen(navController: NavController, modifier: Modifier = Modifier) {
         }
 
         OutlinedButton(
-            onClick = { /* Navigate to Projects */ },
+            onClick = { navController.navigate("projects") },
             modifier = Modifier
                 .height(56.dp),
             colors = ButtonDefaults.buttonColors(containerColor = HackerGreen)

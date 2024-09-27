@@ -3,16 +3,23 @@ package com.example.hackwithpython.projects
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.ui.Modifier
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 
 @Composable
 fun Project14Screen(navController: NavController) {
-    Column(modifier = Modifier.padding(16.dp)) {
+    Column(modifier = Modifier
+        .padding(16.dp)
+        .verticalScroll(rememberScrollState()),
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.Start   ) {
         Text(
             text = "Project 14: Phishing Attack Simulation",
             fontWeight = FontWeight.Bold,
@@ -148,7 +155,7 @@ fun Project14Screen(navController: NavController) {
 
         // Button to navigate to the next project
         Button(onClick = { navController.navigate("project15") }) {
-            Text(text = "Next Project: Malware Analysis")
+            Text(text = "Next Project")
         }
     }
 }

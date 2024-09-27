@@ -29,9 +29,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             HackWithPythonTheme {
                 val navController = rememberNavController()
-                Scaffold(
-                    bottomBar = { BottomNavigationBar(navController = navController) }
-                ) { innerPadding ->
+                Scaffold { innerPadding ->
                     NavigationGraph(
                         navController = navController,
                         modifier = Modifier.padding(innerPadding)
@@ -42,39 +40,12 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun BottomNavigationBar(navController: NavHostController) {
-    BottomNavigation(modifier = Modifier.background(HackerBlack)) {
-        val currentDestination = navController.currentBackStackEntryAsState().value?.destination?.route
-        BottomNavigationItem(
-            icon = { Icon(imageVector = Icons.Default.Home, contentDescription = "Home",
-                modifier = Modifier.background(HackerGreen))},
-            label = { Text("Home") },
-            selected = currentDestination == "home",
-            onClick = { navController.navigate("home") }
-        )
-        BottomNavigationItem(
-            icon = { Icon(imageVector = Icons.Filled.Book, contentDescription = "Lessons",
-                modifier = Modifier.background(HackerGreen)) },
-            label = { Text("Lessons") },
-            selected = currentDestination == "lessons",
-            onClick = { navController.navigate("lessons") }
-        )
-        BottomNavigationItem(
-            icon = { Icon(imageVector = Icons.Default.Work, contentDescription = "Projects",
-                   modifier = Modifier.background(HackerGreen)) },
-            label = { Text("Projects") },
-            selected = currentDestination == "projects",
-            onClick = { navController.navigate("projects") }
-        )
-    }
-}
+
 
 @Composable
 fun NavigationGraph(navController: NavHostController, modifier: Modifier = Modifier) {
     NavHost(navController, startDestination = "home", modifier = modifier) {
         composable("home") { homeScreen(navController) }
-        composable("projects") { ProjectScreen(navController) }
 
         // lesson pages
         composable("lessons") { lessonsScreen(navController) }
@@ -100,6 +71,7 @@ fun NavigationGraph(navController: NavHostController, modifier: Modifier = Modif
         composable("lesson20") { Lesson20Screen(navController) }
 
         // project pages
+        composable("projects") { ProjectScreen(navController) }
         composable("project1") { Project1Screen(navController) }
         composable("project2") { Project2Screen(navController) }
         composable("project3") { Project3Screen(navController) }
