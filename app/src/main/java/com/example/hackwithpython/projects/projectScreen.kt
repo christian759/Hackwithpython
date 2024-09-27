@@ -175,25 +175,5 @@ val hackingProjects = listOf(
         20,
         "Automated Vulnerability Scanner",
         "Build a Python-based vulnerability scanner that automates the process of checking websites for common vulnerabilities."
-    ),
-    HackingProject(
-        21,
-        "Trojan Horse",
-        "Create a Python-based trojan that can open backdoors on a machine, disguised as a legitimate program."
-    ),
-    HackingProject(
-        22,
-        "HTTP Request Smuggling",
-        "Develop a tool to perform HTTP request smuggling attacks, exploiting misconfigurations in web servers."
-    ),
-    HackingProject(
-        23,
-        "Firewall Evasion Techniques",
-        "Experiment with Python scripts to bypass firewalls using techniques like IP fragmentation or obfuscation."
-    ),
-    HackingProject(
-        24,
-        "Automated Exploit Framework",
-        "Create a mini exploit framework in Python to automate the exploitation of common vulnerabilities in web apps and services."
     )
 )

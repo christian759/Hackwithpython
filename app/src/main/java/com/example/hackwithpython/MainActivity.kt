@@ -21,7 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
-import com.example.hackwithpython.projects.ProjectScreen
+import com.example.hackwithpython.projects.*
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,6 +74,7 @@ fun BottomNavigationBar(navController: NavHostController) {
 fun NavigationGraph(navController: NavHostController, modifier: Modifier = Modifier) {
     NavHost(navController, startDestination = "home", modifier = modifier) {
         composable("home") { homeScreen(navController) }
+        composable("projects") { ProjectScreen(navController) }
 
         // lesson pages
         composable("lessons") { lessonsScreen(navController) }
@@ -98,8 +99,28 @@ fun NavigationGraph(navController: NavHostController, modifier: Modifier = Modif
         composable("lesson19") { Lesson19Screen(navController) }
         composable("lesson20") { Lesson20Screen(navController) }
 
+        // project pages
+        composable("project1") { Project1Screen(navController) }
+        composable("project2") { Project2Screen(navController) }
+        composable("project3") { Project3Screen(navController) }
+        composable("project4") { Project4Screen(navController) }
+        composable("project5") { Project5Screen(navController) }
+        composable("project6") { Project6Screen(navController) }
+        composable("project7") { Project7Screen(navController) }
+        composable("project8") { Project8Screen(navController) }
+        composable("project9") { Project9Screen(navController) }
+        composable("project10") { Project10Screen(navController) }
+        composable("project11") { Project11Screen(navController) }
+        composable("project12") { Project12Screen(navController) }
+        composable("project13") { Project13Screen(navController) }
+        composable("project14") { Project14Screen(navController) }
+        composable("project15") { Project15Screen(navController) }
+        composable("project16") { Project16Screen(navController) }
+        composable("project17") { Project17Screen(navController) }
+        composable("project18") { Project18Screen(navController) }
+        composable("project19") { Project19Screen(navController) }
+        composable("project20") { Project20Screen(navController) }
 
-        composable("projects") { ProjectScreen(navController) }
     }
 }
 
