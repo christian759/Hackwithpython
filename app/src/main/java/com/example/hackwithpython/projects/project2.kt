@@ -2,15 +2,21 @@ package com.example.hackwithpython.projects
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.hackwithpython.HackerWhite
 
 @Composable
 fun Project2Screen(navController: NavController) {
@@ -60,11 +66,10 @@ fun Project2Screen(navController: NavController) {
             style = androidx.compose.material3.MaterialTheme.typography.headlineMedium,
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        Text(
-            text = """
-                1. Setting Up the Sniffer:
-                   Use Scapy to sniff network packets.
-                   ```python
+        SelectionContainer {
+            BasicText(
+                text = """
+                   #Use Scapy to sniff network packets.
                    from scapy.all import sniff
 
                    def packet_callback(packet):
@@ -72,11 +77,9 @@ fun Project2Screen(navController: NavController) {
 
                    # Sniff packets on the default interface
                    sniff(prn=packet_callback, count=10)
-                   ```
 
-                2. Capturing Specific Protocols (e.g., HTTP):
-                   Modify the sniffer to capture HTTP packets.
-                   ```python
+                
+                   #Modify the sniffer to capture HTTP packets.
                    from scapy.all import sniff, IP, TCP
 
                    def packet_callback(packet):
@@ -85,11 +88,9 @@ fun Project2Screen(navController: NavController) {
                                print(f"HTTP Packet: {packet[IP].src} -> {packet[IP].dst}")
                    
                    sniff(prn=packet_callback, count=20)
-                   ```
+                   
 
-                3. Filtering Sensitive Information (e.g., Login Credentials):
-                   Detect sensitive information from packets.
-                   ```python
+                   #Detect sensitive information from packets:
                    def packet_callback(packet):
                        if packet.haslayer(TCP) and packet[TCP].dport == 80:
                            payload = str(packet[TCP].payload)
@@ -97,19 +98,21 @@ fun Project2Screen(navController: NavController) {
                                print(f"Sensitive Data Found: {payload}")
 
                    sniff(prn=packet_callback, count=50)
-                   ```
-
-                4. Saving Captured Packets:
-                   Save the sniffed packets to a file for later analysis.
-                   ```python
+                   
+                   #Save the sniffed packets to a file for later analysis.
                    from scapy.all import sniff, wrpcap
 
                    packets = sniff(count=100)
                    wrpcap('captured_packets.pcap', packets)
-                   ```
             """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
-        )
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerWhite
+                ),
+            modifier =Modifier.padding(12.dp)
+            )
+        }
 
         // Conclusion
         Text(

@@ -73,7 +73,8 @@ fun Project4Screen(navController: NavController) {
                    ```bash
                    pip install beautifulsoup4 requests
                    ```
-                """)
+                """.trimIndent(),
+            modifier = Modifier.padding(vertical = 8.dp))
         SelectionContainer {
             BasicText(
                 text = """

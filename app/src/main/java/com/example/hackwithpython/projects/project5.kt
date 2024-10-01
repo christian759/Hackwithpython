@@ -72,7 +72,8 @@ fun Project5Screen(navController: NavController) {
                    ```bash
                    pip install paramiko
                    ```
-                """)
+                """.trimIndent(),
+            modifier = Modifier.padding(vertical = 8.dp))
         SelectionContainer {
             BasicText(
                 text = """

@@ -71,14 +71,15 @@ fun Project3Screen(navController: NavController) {
         )
         Text(
             text = """
-                1. Install Required Libraries:
-                   Install `pynput` via pip.
-                   ```bash
-                   pip install pynput
-                   ```
+            1. Install Required Libraries:
+               Install `pynput` via pip.
+               ```bash
+               pip install pynput
+               ```
 
-                2. Recording Keystrokes:
-                """
+            2. Recording Keystrokes:
+            """.trimIndent(),
+            modifier = Modifier.padding(vertical = 8.dp)
                 )
         SelectionContainer {
             BasicText(
@@ -117,10 +118,11 @@ fun Project3Screen(navController: NavController) {
                            }
             Text(text= """
 
-                3. **Sending Logs via Email**:
-                   Use `smtplib` to send the captured keystrokes via email.
-                   
-                """)
+            3. **Sending Logs via Email**:
+               Use `smtplib` to send the captured keystrokes via email.
+               
+            """.trimIndent(),
+            modifier = Modifier.padding(vertical = 8.dp))
             SelectionContainer {
                 BasicText(
                     text = """    
@@ -154,10 +156,13 @@ fun Project3Screen(navController: NavController) {
                     .horizontalScroll(rememberScrollState())
                 )
             }
-            Text ( text = """
+            Text ( text =
+            """
                 4. **Automating Email Sending**:
                    Set a timer to automatically send the logs every few minutes.
-                  """)
+                  """.trimIndent(),
+            modifier = Modifier.padding(vertical = 8.dp)
+            )
 
             SelectionContainer {
                 BasicText(
@@ -188,7 +193,8 @@ fun Project3Screen(navController: NavController) {
                 5. **Hiding the Keylogger Process** (Optional):
                    Hide the keylogger window to make it less noticeable.
                    
-                 """)
+                 """.trimIndent(),
+            modifier = Modifier.padding(vertical = 8.dp))
 
             SelectionContainer {
                 BasicText(

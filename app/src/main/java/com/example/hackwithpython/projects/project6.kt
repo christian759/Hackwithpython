@@ -72,7 +72,9 @@ fun Project6Screen(navController: NavController) {
                    ```bash
                    pip install scapy netfilterqueue
                    ```
-                   """)
+                   """.trimIndent(),
+            modifier = Modifier.padding(vertical = 8.dp))
+
             SelectionContainer {
                 BasicText("""
                    #Intercepting DNS Packets

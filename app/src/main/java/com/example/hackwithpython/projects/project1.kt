@@ -2,15 +2,21 @@ package com.example.hackwithpython.projects
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.hackwithpython.HackerWhite
 
 @Composable
 fun Project1Screen(navController: NavController) {
@@ -64,16 +70,31 @@ fun Project1Screen(navController: NavController) {
             text = """
                 1.Scanning Wi-Fi Networks:
                    Use Python's Scapy library to scan for available Wi-Fi networks.
-                   ```python
-                   from scapy.all import *
+                   """.trimIndent(),
+            modifier = Modifier.padding(vertical = 8.dp))
+        SelectionContainer {
 
-                   def scan_wifi(interface):
-                       print("Scanning for Wi-Fi networks...")
-                       sniff(iface=interface, prn=lambda x: x.summary(), timeout=10)
-                   
-                   scan_wifi("wlan0")
-                   ```
+        BasicText(
+            text =
+            """
+            from scapy . all import *
 
+                    def scan_wifi (interface) :
+            print("Scanning for Wi-Fi networks...")
+            sniff(iface =interface, prn = lambda x: x.summary(), timeout = 10)
+
+            scan_wifi("wlan0")
+           """.trimIndent(),
+            style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerWhite
+                ),
+            modifier =Modifier.padding(12.dp)
+        )
+        }
+
+        Text(text = """
                 2. Capturing the Handshake:
                    Capture the WPA handshake using airodump-ng.
                    ```bash
