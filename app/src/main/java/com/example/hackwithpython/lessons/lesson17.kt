@@ -194,7 +194,6 @@ fun Lesson17Screen(navController: NavController) {
         SelectionContainer {
         BasicText(
             text = """
-                ```python
                 def calculate(value):
                     if value < 0:
                         raise ValueError("Value cannot be negative")
@@ -209,7 +208,6 @@ fun Lesson17Screen(navController: NavController) {
 
                 if __name__ == "__main__":
                     main()
-                ```
             """.trimIndent(),
             style = TextStyle(
                     fontFamily = FontFamily.Monospace,

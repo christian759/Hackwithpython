@@ -107,7 +107,6 @@ fun Lesson19Screen(navController: NavController) {
                 # Sniff packets on the specified interface
                 print("Sniffing for WEP packets...")
                 sniff(iface="wlan0", prn=packet_handler, store=0)
-                ```
             """.trimIndent(),
                 style = TextStyle(
                     fontFamily = FontFamily.Monospace,
@@ -150,7 +149,6 @@ fun Lesson19Screen(navController: NavController) {
         SelectionContainer {
         BasicText(
             text = """
-                ```python
                 from scapy.all import *
 
                 # Function to capture WPA/WPA2 handshake
@@ -163,7 +161,6 @@ fun Lesson19Screen(navController: NavController) {
                 # Sniff packets on the specified interface
                 print("Sniffing for WPA/WPA2 handshakes...")
                 sniff(iface="wlan0", prn=capture_handshake, store=0)
-                ```
             """.trimIndent(),
             style = TextStyle(
                     fontFamily = FontFamily.Monospace,

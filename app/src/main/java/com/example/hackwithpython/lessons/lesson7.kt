@@ -94,7 +94,6 @@ fun Lesson7Screen(navController: NavController) {
         SelectionContainer {
         BasicText(
             text = """
-                ```python
                 import requests
 
                 url = "https://api.example.com/data"
@@ -105,11 +104,10 @@ fun Lesson7Screen(navController: NavController) {
                     print(data)
                 else:
                     print("Failed to retrieve data:", response.status_code)
-                ```
 
-                This basic script demonstrates:
-                - Sending a GET request to an API endpoint.
-                - Checking the response status and printing the data if successful.
+                # This basic script demonstrates:
+                # - Sending a GET request to an API endpoint.
+                # - Checking the response status and printing the data if successful.
             """.trimIndent(),
             style = TextStyle(
                 fontFamily = FontFamily.Monospace,
@@ -148,7 +146,7 @@ fun Lesson7Screen(navController: NavController) {
         SelectionContainer {
         BasicText(
             text = """
-                ```python
+                
                 import requests
 
                 url = "https://api.openweathermap.org/data/2.5/weather"
@@ -163,11 +161,10 @@ fun Lesson7Screen(navController: NavController) {
                     print(data)
                 else:
                     print("Error:", response.status_code)
-                ```
 
-                In this code:
-                - Parameters allow you to specify what data you want.
-                - Always sanitize your input to avoid issues like SQL injection.
+                # In this code:
+                # - Parameters allow you to specify what data you want.
+                # - Always sanitize your input to avoid issues like SQL injection.
             """.trimIndent(),
             style = TextStyle(
                 fontFamily = FontFamily.Monospace,
@@ -206,7 +203,6 @@ fun Lesson7Screen(navController: NavController) {
         SelectionContainer {
         BasicText(
             text = """
-                ```python
                 headers = {
                     "Authorization": "Bearer your_api_key"
                 }
@@ -217,11 +213,10 @@ fun Lesson7Screen(navController: NavController) {
                     print(data)
                 else:
                     print("Authentication failed:", response.status_code)
-                ```
 
-                Be aware of:
-                - **Exposed API keys**: These can be found in public repositories or via misconfigurations. 
-                - **Replay attacks**: Intercepting requests can allow attackers to re-use valid sessions.
+                # Be aware of:
+                # - **Exposed API keys**: These can be found in public repositories or via misconfigurations. 
+                # - **Replay attacks**: Intercepting requests can allow attackers to re-use valid sessions.
             """.trimIndent(),
             style = TextStyle(
                 fontFamily = FontFamily.Monospace,
@@ -259,7 +254,6 @@ fun Lesson7Screen(navController: NavController) {
         SelectionContainer {
         BasicText(
             text = """
-                ```python
                 import requests
                 import time
 
@@ -268,9 +262,8 @@ fun Lesson7Screen(navController: NavController) {
                     response = requests.get(url)
                     print(response.status_code)
                     time.sleep(0.1)  # Minimal delay to bypass rate limiting
-                ```
 
-                Use such techniques with caution. Continuous hitting of endpoints could lead to IP bans or legal action.
+                # Use such techniques with caution. Continuous hitting of endpoints could lead to IP bans or legal action.
             """.trimIndent(),
             style = TextStyle(
                 fontSize = 14.sp,
@@ -308,7 +301,6 @@ fun Lesson7Screen(navController: NavController) {
         SelectionContainer {
        BasicText(
             text = """
-                ```python
                 try:
                     response = requests.get("https://api.example.com/data")
                     response.raise_for_status()  # Raises an HTTPError for 4xx/5xx
@@ -318,11 +310,10 @@ fun Lesson7Screen(navController: NavController) {
                     print("HTTP error:", err.response.text)  # Potentially sensitive info
                 except Exception as err:
                     print("An error occurred:", err)
-                ```
 
-                Take note:
-                - **Error messages** can reveal backend structures or sensitive data, making them useful for attackers.
-                - Always handle exceptions properly to avoid leaking information.
+                # Take note:
+                # - Error messages** can reveal backend structures or sensitive data, making them useful for attackers.
+                # - Always handle exceptions properly to avoid leaking information.
             """.trimIndent(),
             style = TextStyle(
                 fontFamily = FontFamily.Monospace,

@@ -144,7 +144,7 @@ fun Lesson11Screen(navController: NavController) {
         SelectionContainer {
             BasicText(
                 text = """
-                ```python
+               
                 import smtplib
                 from email.mime.text import MIMEText
 
@@ -162,8 +162,7 @@ fun Lesson11Screen(navController: NavController) {
 
                 # Send a test email
                 send_email('Test Subject', 'This is a test email body.', 'recipient@example.com')
-                ```
-
+                
                 #In this example, replace `your_email@example.com` with your email address and provide the appropriate 
                 #SMTP server details. This script sends an email with a subject and body to the specified recipient.
             """.trimIndent(),

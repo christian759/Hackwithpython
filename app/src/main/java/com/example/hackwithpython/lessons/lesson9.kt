@@ -69,12 +69,11 @@ fun Lesson9Screen(navController: NavHostController) {
                 login("admin' --", "")
                 ```
 
-                In this example, the attacker could bypass authentication by inputting `admin' --` as the username, which effectively comments out the rest of the SQL query.
+                # In this example, the attacker could bypass authentication by inputting `admin' --` as the username, which effectively comments out the rest of the SQL query.
 
                 ### Preventing SQL Injection
-                To prevent SQL Injection, always use parameterized queries or prepared statements:
+                # To prevent SQL Injection, always use parameterized queries or prepared statements:
 
-                ```python
                 def login(username, password):
                     conn = sqlite3.connect('example.db')
                     cursor = conn.cursor()
@@ -196,14 +195,12 @@ fun Lesson9Screen(navController: NavHostController) {
 
                 if __name__ == '__main__':
                     app.run()
-                ```
 
                 #An attacker could craft a form on another site that submits to `/transfer`, exploiting this vulnerability.
 
                 ### Preventing CSRF
                 #Use CSRF tokens to validate requests:
 
-                ```python
                 from flask import Flask, request, session, render_template_string
 
                 app = Flask(__name__)

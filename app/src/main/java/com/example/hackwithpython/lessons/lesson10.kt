@@ -96,9 +96,9 @@ fun Lesson10Screen(navController: NavController) {
             style = androidx.compose.material3.MaterialTheme.typography.headlineMedium,
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        Text(
+        SelectionContainer {
+        BasicText(
             text = """
-                ```python
                 from scapy.all import sniff
 
                 def packet_callback(packet):
@@ -106,14 +106,21 @@ fun Lesson10Screen(navController: NavController) {
 
                 # Sniff packets on the network
                 sniff(prn=packet_callback, count=10)
-                ```
                 
-                In this example, the `sniff` function captures 10 packets from the network. 
-                The `prn` parameter specifies a callback function (`packet_callback`) that is called for each captured packet. 
-                The `packet.summary()` method prints a brief summary of the packet.
+                # In this example, the `sniff` function captures 10 packets from the network. 
+                # The `prn` parameter specifies a callback function (`packet_callback`) that is called for each captured packet. 
+                # The `packet.summary()` method prints a brief summary of the packet.
             """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
-        )
+            style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+            modifier = Modifier
+                .padding(12.dp)
+                .horizontalScroll(rememberScrollState())
+    )
+            }
 
         // Filtering Packets
         Text(
@@ -138,7 +145,8 @@ fun Lesson10Screen(navController: NavController) {
             style = androidx.compose.material3.MaterialTheme.typography.headlineMedium,
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        Text(
+        SelectionContainer {
+        BasicText(
             text = """
                 ```python
                 from scapy.all import sniff
@@ -153,9 +161,16 @@ fun Lesson10Screen(navController: NavController) {
                 In this example, the `filter` parameter is set to `"tcp"`, 
                 allowing the sniffing of only TCP packets on the network.
             """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
+            style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+            modifier = Modifier
+                .padding(12.dp)
+                .horizontalScroll(rememberScrollState())
         )
-
+    }
         // Analyzing Captured Packets
         Text(
             text = "Analyzing Captured Packets",

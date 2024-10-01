@@ -159,13 +159,13 @@ fun Lesson12Screen(navController: NavController) {
                 import subprocess
 
                 def extract_strings(file_path):
-                    "
-                        Uses the 'strings' command to extract printable strings from a binary file.
-                        Args:
-                            file_path (str): The path to the binary file.
-                        Returns:
-                           list: A list of extracted strings.
-                    "
+                    
+                    #    Uses the 'strings' command to extract printable strings from a binary file.
+                    #    Args:
+                    #        file_path (str): The path to the binary file.
+                    #    Returns:
+                    #       list: A list of extracted strings.
+                    
                     result = subprocess.run(['strings', file_path], capture_output=True, text=True)
                     return result.stdout.splitlines()
 

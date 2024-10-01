@@ -201,7 +201,7 @@ fun Lesson5Screen(navController: NavController) {
         SelectionContainer {
             BasicText(
                 text = """
-                    ```python
+                    
                     from selenium import webdriver
     
                     # Create a new instance of the Firefox driver
@@ -215,12 +215,11 @@ fun Lesson5Screen(navController: NavController) {
                     print(element.text)
     
                     driver.quit()
-                    ```
     
-                    **Explanation**:
-                    - `webdriver.Firefox()` initializes a new Firefox browser.
-                    - `get()` loads the specified URL.
-                    - `find_element_by_xpath()` locates an element using an XPath query, useful for extracting data from dynamically loaded sections.
+                    #**Explanation**:
+                    #- `webdriver.Firefox()` initializes a new Firefox browser.
+                    #- `get()` loads the specified URL.
+                    #- `find_element_by_xpath()` locates an element using an XPath query, useful for extracting data from dynamically loaded sections.
                 """.trimIndent(),
                 style = TextStyle(
                     fontSize = 14.sp,

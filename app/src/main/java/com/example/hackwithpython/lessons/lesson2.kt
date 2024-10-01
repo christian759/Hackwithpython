@@ -158,7 +158,6 @@ fun Lesson2Screen(navController: NavController) {
 
         val scapy_code =
             """
-                ```python```
                 from scapy.all import *
 
                 packet = IP(dst="8.8.8.8") / ICMP()

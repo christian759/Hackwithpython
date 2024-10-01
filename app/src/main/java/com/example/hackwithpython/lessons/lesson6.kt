@@ -212,7 +212,7 @@ fun Lesson6Screen(navController: NavController) {
         SelectionContainer {
             BasicText(
                 text = """
-                    ```python
+                   
                     import requests
                     import random
                     import time
@@ -232,11 +232,10 @@ fun Lesson6Screen(navController: NavController) {
     
                         # Rate limit
                         time.sleep(random.uniform(3, 6))  # Sleep for 3 to 6 seconds
-                    ```
     
-                    In this code:
-                    - We randomly choose a user agent for each request to avoid detection.
-                    - We also introduce a delay using `time.sleep()` to slow down our scraping and mimic human behavior.
+                    #In this code:
+                    #- We randomly choose a user agent for each request to avoid detection.
+                    #- We also introduce a delay using `time.sleep()` to slow down our scraping and mimic human behavior.
                 """.trimIndent(),
                 style = TextStyle(
                     fontSize = 14.sp,

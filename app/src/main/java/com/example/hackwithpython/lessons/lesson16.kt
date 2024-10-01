@@ -148,7 +148,7 @@ fun Lesson16Screen(navController: NavController) {
                     # Here, we simulate an injection attack.
                     attack_input = "' OR '1'='1"
                     print(sql_injection_demo(attack_input))
-                    ```
+                    
                 """.trimIndent(),
                 style = TextStyle(
                     fontFamily = FontFamily.Monospace,
