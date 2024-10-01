@@ -150,8 +150,15 @@ fun Project13Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(32.dp))
 
         // Button to navigate to the home screen or previous project
-        Button(onClick = { navController.navigate("project14") }) {
-            Text(text = "Next Project")
+        Row {
+        Button(onClick = {navController.navigate("projects")},
+            modifier = Modifier.padding(16.dp)){
+            Text(text = "Home")
+        }
+        Button(onClick = {navController.navigate("project14")},
+            modifier = Modifier.padding(16.dp)) {
+            Text(text = "Next Lesson")
+            }
         }
     }
 }

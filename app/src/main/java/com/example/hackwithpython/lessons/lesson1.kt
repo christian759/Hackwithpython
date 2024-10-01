@@ -1,12 +1,15 @@
 package com.example.hackwithpython.lessons
 
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowCircleLeft
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,6 +22,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.hackwithpython.HackerBlack
+import com.example.hackwithpython.HackerGreen
+import com.example.hackwithpython.HackerWhite
 
 @Composable
 fun Lesson1Screen(navController: NavController, modifier: Modifier = Modifier) {
@@ -37,6 +42,9 @@ fun Lesson1Screen(navController: NavController, modifier: Modifier = Modifier) {
             textAlign = TextAlign.Start,
             color = MaterialTheme.colorScheme.primary // Use a bright green color
         )
+        Spacer(modifier = Modifier.width(16.dp))
+
+
         Spacer(modifier = Modifier.height(16.dp))
 
         // Introduction to hacking
@@ -73,11 +81,11 @@ fun Lesson1Screen(navController: NavController, modifier: Modifier = Modifier) {
         )
         Text(
             text = """
-                - **White Hat Hackers**: Ethical hackers who use their skills to protect systems and networks. They work with organizations to prevent breaches.
+                - White Hat Hackers: Ethical hackers who use their skills to protect systems and networks. They work with organizations to prevent breaches.
                 
-                - **Black Hat Hackers**: Malicious hackers who exploit vulnerabilities for personal gain, often engaging in illegal activities like stealing data or causing damage.
+                - Black Hat Hackers: Malicious hackers who exploit vulnerabilities for personal gain, often engaging in illegal activities like stealing data or causing damage.
                 
-                - **Grey Hat Hackers**: These hackers fall between white and black hats. They may hack systems without permission but typically have no malicious intent and may later inform the system owner of the vulnerabilities.
+                - Grey Hat Hackers: These hackers fall between white and black hats. They may hack systems without permission but typically have no malicious intent and may later inform the system owner of the vulnerabilities.
             """.trimIndent(),
             style = MaterialTheme.typography.bodySmall,
             textAlign = TextAlign.Start,
@@ -175,8 +183,15 @@ fun Lesson1Screen(navController: NavController, modifier: Modifier = Modifier) {
 
         Spacer(modifier = Modifier.height(32.dp))
 
-        Button(onClick = { navController.navigate("lesson2") }) {
+        Row {
+        Button(onClick = {navController.navigate("lessons")},
+            modifier = Modifier.padding(16.dp)){
+            Text(text = "Home")
+        }
+        Button(onClick = {navController.navigate("lesson2")},
+            modifier = Modifier.padding(16.dp)) {
             Text(text = "Next Lesson")
+            }
         }
     }
 }

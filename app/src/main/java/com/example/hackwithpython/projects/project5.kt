@@ -153,8 +153,15 @@ fun Project5Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(32.dp))
 
         // Button to navigate to the next project
-        Button(onClick = { navController.navigate("project6") }) {
-            Text(text = "Next Project")
+        Row {
+        Button(onClick = {navController.navigate("projects")},
+            modifier = Modifier.padding(16.dp)){
+            Text(text = "Home")
+        }
+        Button(onClick = {navController.navigate("project6")},
+            modifier = Modifier.padding(16.dp)) {
+            Text(text = "Next Lesson")
+            }
         }
     }
 }

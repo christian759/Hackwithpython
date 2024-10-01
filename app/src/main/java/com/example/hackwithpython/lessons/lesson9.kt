@@ -1,10 +1,7 @@
 package com.example.hackwithpython.lessons
 
 import androidx.compose.foundation.horizontalScroll
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.selection.SelectionContainer
@@ -447,8 +444,15 @@ fun Lesson9Screen(navController: NavHostController) {
         Spacer(modifier = Modifier.height(32.dp))
 
         // Button to navigate to the next lesson
-        Button(onClick = { navController.navigate("lesson10") }) {
+        Row {
+        Button(onClick = {navController.navigate("lessons")},
+            modifier = Modifier.padding(16.dp)){
+            Text(text = "Home")
+        }
+        Button(onClick = {navController.navigate("lesson10")},
+            modifier = Modifier.padding(16.dp)) {
             Text(text = "Next Lesson")
+            }
         }
     }
 }

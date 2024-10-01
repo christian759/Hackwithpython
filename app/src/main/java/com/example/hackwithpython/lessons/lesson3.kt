@@ -241,8 +241,15 @@ fun Lesson3Screen(navController: NavController) {
             )
         }
 
-        Button(onClick = { navController.navigate("lesson4") }) {
+        Row {
+        Button(onClick = {navController.navigate("lessons")},
+            modifier = Modifier.padding(16.dp)){
+            Text(text = "Home")
+        }
+        Button(onClick = {navController.navigate("lesson4")},
+            modifier = Modifier.padding(16.dp)) {
             Text(text = "Next Lesson")
+            }
         }
     }
 }

@@ -191,8 +191,15 @@ fun Lesson2Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(32.dp))
 
         // Button to navigate to the next lesson
-        Button(onClick = { navController.navigate("lesson3") }) {
-            Text(text = "Next Lesson")
+        Row {
+        Button(onClick = {navController.navigate("lessons")},
+            modifier = Modifier.padding(16.dp)){
+            Text(text = "Home")
         }
+        Button(onClick = {navController.navigate("lesson3")},
+            modifier = Modifier.padding(16.dp)) {
+            Text(text = "Next Lesson")
+            }
+        }}
     }
-}
+
