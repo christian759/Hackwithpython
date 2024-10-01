@@ -52,7 +52,8 @@ fun Lesson3Screen(navController: NavController) {
             text = "Python’s popularity in hacking stems from its simplicity and versatility. Here are some reasons why Python is favored among hackers:\n" +
                     "- Readable Syntax: Python's clear and concise syntax allows you to write code faster and understand it more easily.\n" +
                     "- Extensive Libraries: Python has a rich ecosystem of libraries that enable quick development of powerful tools.\n" +
-                    "- Cross-Platform: Python runs on various operating systems, making it accessible for different environments.",
+                    "- Cross-Platform: Python runs on various operating systems, making it accessible for different environments.".trimIndent(),
+            modifier = Modifier.padding(vertical = 8.dp),
             style = MaterialTheme.typography.bodyMedium
         )
         Spacer(modifier = Modifier.height(16.dp))
@@ -68,7 +69,8 @@ fun Lesson3Screen(navController: NavController) {
                 Understanding Python's syntax is crucial for writing " +
                 effective scripts. Python uses indentation to define blocks of code. 
                 Unlike many other programming languages that use braces or keywords, Python relies on whitespace, which enhances readability
-                Example:""",
+                Example:""".trimIndent(),
+            modifier = Modifier.padding(vertical = 8.dp),
             style = MaterialTheme.typography.bodyMedium
         )
 
@@ -103,7 +105,8 @@ fun Lesson3Screen(navController: NavController) {
                     "- Floats: Decimal numbers, e.g., `1.0`, `2.5`.\n" +
                     "- Strings: Text enclosed in quotes, e.g., `\"Hello, World!\"`.\n" +
                     "- Lists: Ordered collections, e.g., `[1, 2, 3]`.\n" +
-                    "- Dictionaries: Key-value pairs, e.g., `{'username': 'hacker123'}`.",
+                    "- Dictionaries: Key-value pairs, e.g., `{'username': 'hacker123'}`.".trimIndent(),
+            modifier = Modifier.padding(vertical = 8.dp),
             style = MaterialTheme.typography.bodyMedium
         )
         Spacer(modifier = Modifier.height(16.dp))
@@ -120,7 +123,8 @@ fun Lesson3Screen(navController: NavController) {
                 - If Statements: Execute code based on conditions.\n" +
                 - Loops: Repeat blocks of code.\n
                 Example of a loop:\n
-                """,
+                """.trimIndent(),
+            modifier = Modifier.padding(vertical = 8.dp),
             style = MaterialTheme.typography.bodyMedium
         )
 
