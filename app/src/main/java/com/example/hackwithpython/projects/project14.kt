@@ -1,17 +1,24 @@
 package com.example.hackwithpython.projects
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.ui.Modifier
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.hackwithpython.HackerWhite
 
 @Composable
 fun Project14Screen(navController: NavController) {
@@ -83,8 +90,9 @@ fun Project14Screen(navController: NavController) {
             """.trimIndent(),
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        Text(
-            text = """
+        SelectionContainer {
+            BasicText(
+                text = """
                 import smtplib
                 from email.mime.multipart import MIMEMultipart
                 from email.mime.text import MIMEText
@@ -132,8 +140,15 @@ fun Project14Screen(navController: NavController) {
                 # Example usage
                 # send_phishing_email("victim@example.com")  # Replace with target email
             """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
-        )
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerWhite
+                ),
+                modifier =Modifier.padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
 
         // Ethical Use Disclaimer
         Text(

@@ -1,9 +1,12 @@
 package com.example.hackwithpython.projects
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
@@ -12,7 +15,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.hackwithpython.HackerWhite
 
 @Composable
 fun Project20Screen(navController: NavController) {
@@ -86,7 +93,8 @@ fun Project20Screen(navController: NavController) {
             """.trimIndent(),
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        Text(
+        SelectionContainer {
+        BasicText(
             text = """
                 import requests
 
@@ -101,8 +109,15 @@ fun Project20Screen(navController: NavController) {
                 # Example usage
                 check_sql_injection("http://example.com/product?id=")
             """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
+            style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerWhite
+                ),
+            modifier =Modifier.padding(12.dp)
+                .horizontalScroll(rememberScrollState())
         )
+            }
 
         // Ethical Use Disclaimer
         Text(

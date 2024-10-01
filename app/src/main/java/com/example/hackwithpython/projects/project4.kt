@@ -1,16 +1,23 @@
 package com.example.hackwithpython.projects
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.hackwithpython.HackerWhite
 
 @Composable
 fun Project4Screen(navController: NavController) {
@@ -61,17 +68,18 @@ fun Project4Screen(navController: NavController) {
         )
         Text(
             text = """
-                1. **Install Required Libraries**:
+                Install Required Libraries:
                    Install `beautifulsoup4` and `requests` via pip.
                    ```bash
                    pip install beautifulsoup4 requests
                    ```
-
-                2. **Sending HTTP Requests**:
-                   Use the `requests` library to retrieve the content of a website.
-                   ```python
+                """)
+        SelectionContainer {
+            BasicText(
+                text = """
+                   # Use the `requests` library to retrieve the content of a website.
                    import requests
-
+                   
                    url = "https://example.com"
                    response = requests.get(url)
 
@@ -79,11 +87,8 @@ fun Project4Screen(navController: NavController) {
                        print("Website content retrieved successfully")
                    else:
                        print("Failed to retrieve website content")
-                   ```
 
-                3. **Parsing HTML with BeautifulSoup**:
-                   Use BeautifulSoup to parse and extract data from the HTML content of the website.
-                   ```python
+                   # Use BeautifulSoup to parse and extract data from the HTML content of the website.
                    from bs4 import BeautifulSoup
 
                    soup = BeautifulSoup(response.text, "html.parser")
@@ -92,41 +97,40 @@ fun Project4Screen(navController: NavController) {
                    forms = soup.find_all("form")
                    for form in forms:
                        print(f"Form action: {form.get('action')}, Method: {form.get('method')}")
-                   ```
+                   
 
-                4. **Analyzing Vulnerabilities**:
-                   Analyze the website for common vulnerabilities. For example, detecting insecure forms that don't use HTTPS.
-                   ```python
+                   # Analyze the website for common vulnerabilities. For example, detecting insecure forms that don't use HTTPS
+                   
                    insecure_forms = []
                    for form in forms:
                        if form.get('action') and not form.get('action').startswith("https"):
                            insecure_forms.append(form)
 
                    print(f"Found {len(insecure_forms)} insecure forms")
-                   ```
-
-                5. **Detecting Outdated Software**:
-                   Scrape version numbers of known CMS (Content Management System) or software and compare them with the latest version.
-                   ```python
+                   
+                   
+                   # Scrape version numbers of known CMS (Content Management System) or software and compare them with the latest version
                    version_tags = soup.find_all(text=lambda text: "version" in text.lower())
 
                    for tag in version_tags:
                        print(f"Potential software version: {tag}")
-                   ```
-
-                6. **Automating the Process**:
-                   Set up a loop to continuously scrape and analyze multiple websites for vulnerabilities.
-                   ```python
+                  
+                   #Set up a loop to continuously scrape and analyze multiple websites for vulnerabilities.
                    websites = ["https://example1.com", "https://example2.com"]
                    for website in websites:
                        response = requests.get(website)
                        soup = BeautifulSoup(response.text, "html.parser")
-                       # Reuse the previous analysis logic here...
-                   ```
-
+                       
             """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
-        )
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerWhite
+                ),
+                modifier =Modifier.padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
 
         // Ethical Considerations Section
         Text(

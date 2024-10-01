@@ -47,8 +47,8 @@ fun Project2Screen(navController: NavController) {
         )
         Text(
             text = """
-                - **Scapy**: A Python library used for network packet crafting, sending, and sniffing.
-                - **TCPDump**: A command-line packet analyzer used to capture and analyze network traffic.
+                - Scapy: A Python library used for network packet crafting, sending, and sniffing.
+                - TCPDump: A command-line packet analyzer used to capture and analyze network traffic.
             """.trimIndent(),
             modifier = Modifier.padding(vertical = 8.dp)
         )
@@ -62,7 +62,7 @@ fun Project2Screen(navController: NavController) {
         )
         Text(
             text = """
-                1. **Setting Up the Sniffer**:
+                1. Setting Up the Sniffer:
                    Use Scapy to sniff network packets.
                    ```python
                    from scapy.all import sniff
@@ -74,7 +74,7 @@ fun Project2Screen(navController: NavController) {
                    sniff(prn=packet_callback, count=10)
                    ```
 
-                2. **Capturing Specific Protocols (e.g., HTTP)**:
+                2. Capturing Specific Protocols (e.g., HTTP):
                    Modify the sniffer to capture HTTP packets.
                    ```python
                    from scapy.all import sniff, IP, TCP
@@ -87,7 +87,7 @@ fun Project2Screen(navController: NavController) {
                    sniff(prn=packet_callback, count=20)
                    ```
 
-                3. **Filtering Sensitive Information (e.g., Login Credentials)**:
+                3. Filtering Sensitive Information (e.g., Login Credentials):
                    Detect sensitive information from packets.
                    ```python
                    def packet_callback(packet):
@@ -99,7 +99,7 @@ fun Project2Screen(navController: NavController) {
                    sniff(prn=packet_callback, count=50)
                    ```
 
-                4. **Saving Captured Packets**:
+                4. Saving Captured Packets:
                    Save the sniffed packets to a file for later analysis.
                    ```python
                    from scapy.all import sniff, wrpcap
