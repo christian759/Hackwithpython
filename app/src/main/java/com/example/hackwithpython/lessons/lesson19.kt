@@ -1,16 +1,23 @@
 package com.example.hackwithpython.lessons
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.ui.Modifier
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.hackwithpython.HackerBlack
 
 @Composable
 fun Lesson19Screen(navController: NavController) {
@@ -87,9 +94,9 @@ fun Lesson19Screen(navController: NavController) {
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        Text(
-            text = """
-                ```python
+        SelectionContainer {
+            BasicText(
+                text = """
                 from scapy.all import *
 
                 # Function to capture packets
@@ -102,8 +109,16 @@ fun Lesson19Screen(navController: NavController) {
                 sniff(iface="wlan0", prn=packet_handler, store=0)
                 ```
             """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
-        )
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
         Text(
             text = """
                 In this code, we use Scapy to sniff packets on a wireless interface (`wlan0`). The `packet_handler` function 
@@ -132,7 +147,8 @@ fun Lesson19Screen(navController: NavController) {
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        Text(
+        SelectionContainer {
+        BasicText(
             text = """
                 ```python
                 from scapy.all import *
@@ -149,8 +165,16 @@ fun Lesson19Screen(navController: NavController) {
                 sniff(iface="wlan0", prn=capture_handshake, store=0)
                 ```
             """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
+            style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+            modifier = Modifier
+                .padding(12.dp)
+                .horizontalScroll(rememberScrollState())
         )
+            }
         Text(
             text = """
                 This code listens for packets containing EAPOL frames, which are part of the WPA/WPA2 handshake process. 

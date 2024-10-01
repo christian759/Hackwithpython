@@ -1,16 +1,23 @@
 package com.example.hackwithpython.lessons
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.ui.Modifier
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.hackwithpython.HackerBlack
 
 @Composable
 fun Lesson17Screen(navController: NavController) {
@@ -125,27 +132,34 @@ fun Lesson17Screen(navController: NavController) {
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        Text(
-            text = """
-                ```python
-                def add(a, b):
-                    return a + b
-
-                def subtract(a, b):
-                    return a - b
-
-                def main():
-                    x = 5
-                    y = 3
-                    print("Addition:", add(x, y))
-                    print("Subtraction:", subtract(x, y))
-
-                if __name__ == "__main__":
-                    main()
-                ```
-            """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
-        )
+        SelectionContainer {
+            BasicText(
+                text = """
+                    def add(a, b):
+                        return a + b
+    
+                    def subtract(a, b):
+                        return a - b
+    
+                    def main():
+                        x = 5
+                        y = 3
+                        print("Addition:", add(x, y))
+                        print("Subtraction:", subtract(x, y))
+    
+                    if __name__ == "__main__":
+                        main()
+                """.trimIndent(),
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+            }
         Text(
             text = """
                 In this example, the script defines two functions: `add` and `subtract`. 
@@ -177,7 +191,8 @@ fun Lesson17Screen(navController: NavController) {
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        Text(
+        SelectionContainer {
+        BasicText(
             text = """
                 ```python
                 def calculate(value):
@@ -196,8 +211,16 @@ fun Lesson17Screen(navController: NavController) {
                     main()
                 ```
             """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
+            style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+            modifier = Modifier
+                .padding(12.dp)
+                .horizontalScroll(rememberScrollState())
         )
+            }
         Text(
             text = """
                 In this decompiled code, the `calculate` function raises a `ValueError` if the input is negative. 
@@ -227,9 +250,9 @@ fun Lesson17Screen(navController: NavController) {
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        Text(
+        SelectionContainer {
+        BasicText(
             text = """
-                ```python
                 class BankAccount:
                     def __init__(self, owner, balance=0):
                         self.owner = owner
@@ -249,10 +272,17 @@ fun Lesson17Screen(navController: NavController) {
 
                     def get_balance(self):
                         return self.balance
-                ```
             """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
+            style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+            modifier = Modifier
+                .padding(12.dp)
+                .horizontalScroll(rememberScrollState())
         )
+            }
         Text(
             text = """
                 To reverse engineer this class:

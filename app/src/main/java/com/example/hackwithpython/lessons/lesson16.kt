@@ -1,16 +1,23 @@
 package com.example.hackwithpython.lessons
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.ui.Modifier
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.hackwithpython.HackerBlack
 
 @Composable
 fun Lesson16Screen(navController: NavController) {
@@ -117,34 +124,42 @@ fun Lesson16Screen(navController: NavController) {
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        Text(
-            text = """
-                ```python
-                import sqlite3
-
-                # Function to demonstrate SQL injection
-                def sql_injection_demo(user_input):
-                    # Connect to the SQLite database
-                    conn = sqlite3.connect('example.db')
-                    cursor = conn.cursor()
-
-                    # Crafting a SQL injection query
-                    query = f"SELECT * FROM users WHERE username = '{user_input}'"
-                    cursor.execute(query)
-
-                    # Fetching results
-                    results = cursor.fetchall()
-                    return results
-
-                # Example usage
-                # Normally, user input would be sanitized before using in SQL queries.
-                # Here, we simulate an injection attack.
-                attack_input = "' OR '1'='1"
-                print(sql_injection_demo(attack_input))
-                ```
-            """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
-        )
+        SelectionContainer {
+            BasicText(
+                text = """
+                    import sqlite3
+    
+                    # Function to demonstrate SQL injection
+                    def sql_injection_demo(user_input):
+                        # Connect to the SQLite database
+                        conn = sqlite3.connect('example.db')
+                        cursor = conn.cursor()
+    
+                        # Crafting a SQL injection query
+                        query = f"SELECT * FROM users WHERE username = '{user_input}'"
+                        cursor.execute(query)
+    
+                        # Fetching results
+                        results = cursor.fetchall()
+                        return results
+    
+                    # Example usage
+                    # Normally, user input would be sanitized before using in SQL queries.
+                    # Here, we simulate an injection attack.
+                    attack_input = "' OR '1'='1"
+                    print(sql_injection_demo(attack_input))
+                    ```
+                """.trimIndent(),
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
         Text(
             text = """
                 In this example, the function `sql_injection_demo` simulates an SQL injection attack. 

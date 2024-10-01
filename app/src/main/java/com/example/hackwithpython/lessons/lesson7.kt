@@ -6,6 +6,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
@@ -90,6 +91,7 @@ fun Lesson7Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(8.dp))
 
         // Basic API Request Code
+        SelectionContainer {
         BasicText(
             text = """
                 ```python
@@ -118,6 +120,7 @@ fun Lesson7Screen(navController: NavController) {
                 .padding(12.dp)
                 .horizontalScroll(rememberScrollState())
         )
+            }
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -142,6 +145,7 @@ fun Lesson7Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(8.dp))
 
         // API with Parameters Example
+        SelectionContainer {
         BasicText(
             text = """
                 ```python
@@ -174,6 +178,7 @@ fun Lesson7Screen(navController: NavController) {
                 .padding(12.dp)
                 .horizontalScroll(rememberScrollState())
         )
+            }
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -198,6 +203,7 @@ fun Lesson7Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(8.dp))
 
         // Example with API Key
+        SelectionContainer {
         BasicText(
             text = """
                 ```python
@@ -226,7 +232,7 @@ fun Lesson7Screen(navController: NavController) {
                 .padding(12.dp)
                 .horizontalScroll(rememberScrollState())
         )
-
+    }
         Spacer(modifier = Modifier.height(16.dp))
 
         // API Rate Limiting and Denial of Service
@@ -250,6 +256,7 @@ fun Lesson7Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(8.dp))
 
         // Rate Limiting Code Example
+        SelectionContainer {
         BasicText(
             text = """
                 ```python
@@ -274,7 +281,7 @@ fun Lesson7Screen(navController: NavController) {
                 .padding(12.dp)
                 .horizontalScroll(rememberScrollState())
         )
-
+        }
         Spacer(modifier = Modifier.height(16.dp))
 
         // Error Handling and Exploitation
@@ -298,6 +305,7 @@ fun Lesson7Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(8.dp))
 
         // Error Handling Code Example
+        SelectionContainer {
        BasicText(
             text = """
                 ```python
@@ -325,6 +333,7 @@ fun Lesson7Screen(navController: NavController) {
                 .padding(12.dp)
                 .horizontalScroll(rememberScrollState())
         )
+            }
 
         Spacer(modifier = Modifier.height(16.dp))
 

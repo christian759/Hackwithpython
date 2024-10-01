@@ -1,6 +1,6 @@
 package com.example.hackwithpython.lessons
 
-import androidx.compose.foundation.border
+
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState

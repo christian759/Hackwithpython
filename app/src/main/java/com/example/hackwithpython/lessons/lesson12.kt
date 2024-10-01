@@ -1,16 +1,23 @@
 package com.example.hackwithpython.lessons
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.ui.Modifier
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.hackwithpython.HackerBlack
 
 @Composable
 fun Lesson12Screen(navController: NavController) {
@@ -145,9 +152,10 @@ fun Lesson12Screen(navController: NavController) {
             style = androidx.compose.material3.MaterialTheme.typography.headlineMedium,
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        Text(
-            text = """
-                ```python
+
+        SelectionContainer {
+            BasicText(
+                text = """
                 import subprocess
 
                 def extract_strings(file_path):
@@ -167,13 +175,20 @@ fun Lesson12Screen(navController: NavController) {
 
                 for string in extracted_strings:
                     print(string)
-                ```
 
-                This script utilizes the `strings` command-line tool to extract and print readable strings from a specified binary file.
-                Extracted strings can provide valuable information about the malware's capabilities and intentions.
+                # This script utilizes the `strings` command-line tool to extract and print readable strings from a specified binary file.
+                # Extracted strings can provide valuable information about the malware's capabilities and intentions.
             """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
-        )
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
 
         // Dynamic Analysis
         Text(

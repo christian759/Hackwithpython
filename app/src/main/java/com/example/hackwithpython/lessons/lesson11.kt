@@ -1,16 +1,23 @@
 package com.example.hackwithpython.lessons
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.ui.Modifier
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.hackwithpython.HackerBlack
 
 @Composable
 fun Lesson11Screen(navController: NavController) {
@@ -78,9 +85,10 @@ fun Lesson11Screen(navController: NavController) {
             style = androidx.compose.material3.MaterialTheme.typography.headlineMedium,
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        Text(
+
+        SelectionContainer {
+        BasicText(
             text = """
-                ```python
                 import os
                 import shutil
 
@@ -97,11 +105,19 @@ fun Lesson11Screen(navController: NavController) {
                 organize_files('/path/to/your/directory')
                 ```
 
-                This script moves files from the specified directory into subdirectories based on their extensions. 
-                For example, all `.jpg` files will be moved to a `jpg` folder.
+                #This script moves files from the specified directory into subdirectories based on their extensions. 
+                #For example, all `.jpg` files will be moved to a `jpg` folder.
             """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
+            style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+            modifier = Modifier
+                .padding(12.dp)
+                .horizontalScroll(rememberScrollState())
         )
+            }
 
         // Automating Email Sending
         Text(
@@ -125,8 +141,9 @@ fun Lesson11Screen(navController: NavController) {
             style = androidx.compose.material3.MaterialTheme.typography.headlineMedium,
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        Text(
-            text = """
+        SelectionContainer {
+            BasicText(
+                text = """
                 ```python
                 import smtplib
                 from email.mime.text import MIMEText
@@ -147,11 +164,19 @@ fun Lesson11Screen(navController: NavController) {
                 send_email('Test Subject', 'This is a test email body.', 'recipient@example.com')
                 ```
 
-                In this example, replace `your_email@example.com` with your email address and provide the appropriate 
-                SMTP server details. This script sends an email with a subject and body to the specified recipient.
+                #In this example, replace `your_email@example.com` with your email address and provide the appropriate 
+                #SMTP server details. This script sends an email with a subject and body to the specified recipient.
             """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
-        )
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
 
         // Automating Web Scraping
         Text(
@@ -175,9 +200,9 @@ fun Lesson11Screen(navController: NavController) {
             style = androidx.compose.material3.MaterialTheme.typography.headlineMedium,
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        Text(
-            text = """
-                ```python
+        SelectionContainer {
+            BasicText(
+                text = """
                 import requests
                 from bs4 import BeautifulSoup
 
@@ -191,12 +216,19 @@ fun Lesson11Screen(navController: NavController) {
 
                 # Scrape headlines from a news website
                 scrape_headlines('https://www.example-news-website.com')
-                ```
-
-                This script fetches the webpage content and extracts all the headlines from `h2` tags, printing them to the console.
+           
+                # This script fetches the webpage content and extracts all the headlines from `h2` tags, printing them to the console.
             """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
-        )
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
 
         // Scheduling Tasks
         Text(
@@ -220,9 +252,9 @@ fun Lesson11Screen(navController: NavController) {
             style = androidx.compose.material3.MaterialTheme.typography.headlineMedium,
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        Text(
-            text = """
-                ```python
+        SelectionContainer {
+            BasicText(
+                text = """
                 import schedule
                 import time
 
@@ -235,12 +267,19 @@ fun Lesson11Screen(navController: NavController) {
                 while True:
                     schedule.run_pending()
                     time.sleep(1)
-                ```
 
-                This script schedules a task to run daily at 10:00 AM. The `job` function will be executed at that time.
+                # This script schedules a task to run daily at 10:00 AM. The `job` function will be executed at that time.
             """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
-        )
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
 
         // Conclusion
         Text(

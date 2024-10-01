@@ -1,16 +1,23 @@
 package com.example.hackwithpython.lessons
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.ui.Modifier
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.hackwithpython.HackerBlack
 
 @Composable
 fun Lesson18Screen(navController: NavController) {
@@ -91,9 +98,9 @@ fun Lesson18Screen(navController: NavController) {
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        Text(
-            text = """
-                ```c
+        SelectionContainer {
+            BasicText(
+                text = """
                 #include <stdio.h>
                 #include <string.h>
 
@@ -111,10 +118,17 @@ fun Lesson18Screen(navController: NavController) {
                     vulnerable_function(argv[1]);
                     return 0;
                 }
-                ```
             """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
-        )
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
         Text(
             text = """
                 In this code, the `strcpy` function copies the input into a fixed-size buffer without checking the length, 
@@ -127,9 +141,9 @@ fun Lesson18Screen(navController: NavController) {
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        Text(
+        SelectionContainer {
+        BasicText(
             text = """
-                ```python
                 import os
 
                 # Create a payload that exceeds the buffer size
@@ -137,10 +151,18 @@ fun Lesson18Screen(navController: NavController) {
 
                 # Execute the vulnerable program with the payload
                 os.system(f"./vulnerable_program '{payload.decode()}'")
-                ```
+                
             """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
+            style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+            modifier = Modifier
+                .padding(12.dp)
+                .horizontalScroll(rememberScrollState())
         )
+            }
         Text(
             text = """
                 In this example, the exploit code constructs a payload filled with 'A' characters to overflow the buffer. 
@@ -168,9 +190,9 @@ fun Lesson18Screen(navController: NavController) {
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        Text(
+        SelectionContainer {
+        BasicText(
             text = """
-                ```python
                 import os
 
                 def execute_command(command):
@@ -179,10 +201,17 @@ fun Lesson18Screen(navController: NavController) {
                 if __name__ == "__main__":
                     user_input = input("Enter command: ")
                     execute_command(user_input)
-                ```
             """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
+            style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+            modifier = Modifier
+                .padding(12.dp)
+                .horizontalScroll(rememberScrollState())
         )
+            }
         Text(
             text = """
                 In this script, the `execute_command` function executes user input without validation, leading to a command injection vulnerability. 
@@ -195,9 +224,9 @@ fun Lesson18Screen(navController: NavController) {
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        Text(
+        SelectionContainer {
+        BasicText(
             text = """
-                ```python
                 import os
 
                 # Malicious command to be executed
@@ -205,10 +234,18 @@ fun Lesson18Screen(navController: NavController) {
 
                 # Execute the vulnerable script with the malicious command
                 os.system(f"python vulnerable_script.py '{malicious_command}'")
-                ```
+               
             """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
+            style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+            modifier = Modifier
+                .padding(12.dp)
+                .horizontalScroll(rememberScrollState())
         )
+            }
         Text(
             text = """
                 In this example, the exploit code crafts a malicious command that creates a file and displays its contents. 

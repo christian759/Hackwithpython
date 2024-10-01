@@ -1,16 +1,23 @@
 package com.example.hackwithpython.lessons
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.ui.Modifier
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.hackwithpython.HackerBlack
 
 @Composable
 fun Lesson10Screen(navController: NavController) {
@@ -173,23 +180,35 @@ fun Lesson10Screen(navController: NavController) {
         )
         Text(
             text = """
-                ```python
-                from scapy.all import sniff, IP
-
-                def packet_callback(packet):
-                    if IP in packet:
-                        ip_layer = packet[IP]
-                        print(f"Source IP: {ip_layer.src}, Destination IP: {ip_layer.dst}")
-
-                # Sniff packets and analyze IP fields
-                sniff(prn=packet_callback, count=10)
-                ```
-
                 In this example, we check if the IP layer is present in the captured packet. 
                 If it is, we access the source and destination IP addresses and print them.
             """.trimIndent(),
             modifier = Modifier.padding(vertical = 8.dp)
         )
+
+        SelectionContainer {
+            BasicText(
+                text = """
+                    from scapy.all import sniff, IP
+
+                    def packet_callback(packet):
+                        if IP in packet:
+                            ip_layer = packet[IP]
+                            print(f"Source IP: {ip_layer.src}, Destination IP: {ip_layer.dst}")
+
+                    # Sniff packets and analyze IP fields
+                    sniff(prn=packet_callback, count=10)
+                """.trimIndent(),
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
 
         // Packet Manipulation
         Text(
@@ -215,7 +234,15 @@ fun Lesson10Screen(navController: NavController) {
         )
         Text(
             text = """
-                ```python
+                In this example, we create an ICMP Echo Request packet targeting Google's public DNS server (8.8.8.8) 
+                and send it using the `send` function.
+            """.trimIndent(),
+            modifier = Modifier.padding(vertical = 8.dp)
+        )
+
+        SelectionContainer {
+            BasicText(
+                text = """
                 from scapy.all import IP, ICMP, send
 
                 # Create an ICMP Echo Request packet
@@ -223,13 +250,17 @@ fun Lesson10Screen(navController: NavController) {
 
                 # Send the packet
                 send(packet)
-                ```
-
-                In this example, we create an ICMP Echo Request packet targeting Google's public DNS server (8.8.8.8) 
-                and send it using the `send` function.
-            """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
-        )
+                """.trimIndent(),
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
 
         // Conclusion
         Text(

@@ -1,18 +1,25 @@
 package com.example.hackwithpython.lessons
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.hackwithpython.HackerBlack
 
 @Composable
 fun Lesson9Screen(navController: NavHostController) {
@@ -38,8 +45,13 @@ fun Lesson9Screen(navController: NavHostController) {
                 
                 ### Python Example of SQL Injection
                 Here's a simple example of a Python script vulnerable to SQL injection:
-
-                ```python
+            """.trimIndent(),
+            modifier = Modifier.padding(vertical = 8.dp)
+        )
+        SelectionContainer {
+            BasicText(
+                text =
+                """
                 import sqlite3
 
                 def login(username, password):
@@ -73,10 +85,17 @@ fun Lesson9Screen(navController: NavHostController) {
                         print("Login successful!")
                     else:
                         print("Login failed!")
-                ```
-            """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
-        )
+                        """.trimIndent(),
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
 
         // Cross-Site Scripting (XSS) Section
         Text(
@@ -91,8 +110,14 @@ fun Lesson9Screen(navController: NavHostController) {
                 
                 ### Python Example of XSS
                 Consider a simple web application using Flask:
+            """.trimIndent(),
+            modifier = Modifier.padding(vertical = 8.dp)
+        )
 
-                ```python
+        SelectionContainer {
+            BasicText(
+                text =
+                    """
                 from flask import Flask, request, render_template_string
 
                 app = Flask(__name__)
@@ -107,12 +132,11 @@ fun Lesson9Screen(navController: NavHostController) {
                     app.run()
                 ```
 
-                If a user inputs `<script>alert('XSS');</script>` as their name, the script will execute in the browser, demonstrating an XSS vulnerability.
+                # If a user inputs `<script>alert('XSS');</script>` as their name, the script will execute in the browser, demonstrating an XSS vulnerability.
 
                 ### Preventing XSS
-                Use template engines that automatically escape content, or manually escape input before rendering it:
+                # Use template engines that automatically escape content, or manually escape input before rendering it:
 
-                ```python
                 from flask import Flask, request, render_template_string, escape
 
                 app = Flask(__name__)
@@ -126,11 +150,17 @@ fun Lesson9Screen(navController: NavHostController) {
 
                 if __name__ == '__main__':
                     app.run()
-                ```
-            """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
-        )
-
+                    """.trimIndent(),
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
         // CSRF Section
         Text(
             text = "Cross-Site Request Forgery (CSRF)",
@@ -144,8 +174,13 @@ fun Lesson9Screen(navController: NavHostController) {
 
                 ### Python Example of CSRF
                 Here's an example of a Flask route vulnerable to CSRF:
+            """.trimIndent(),
+            modifier = Modifier.padding(vertical = 8.dp)
+        )
 
-                ```python
+        SelectionContainer {
+            BasicText(
+                text = """
                 from flask import Flask, request, session
 
                 app = Flask(__name__)
@@ -163,10 +198,10 @@ fun Lesson9Screen(navController: NavHostController) {
                     app.run()
                 ```
 
-                An attacker could craft a form on another site that submits to `/transfer`, exploiting this vulnerability.
+                #An attacker could craft a form on another site that submits to `/transfer`, exploiting this vulnerability.
 
                 ### Preventing CSRF
-                Use CSRF tokens to validate requests:
+                #Use CSRF tokens to validate requests:
 
                 ```python
                 from flask import Flask, request, session, render_template_string
@@ -193,10 +228,17 @@ fun Lesson9Screen(navController: NavHostController) {
 
                 if __name__ == '__main__':
                     app.run()
-                ```
-            """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
-        )
+                """.trimIndent(),
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
 
         // Remote Code Execution (RCE) Section
         Text(
@@ -211,8 +253,14 @@ fun Lesson9Screen(navController: NavHostController) {
 
                 ### Python Example of RCE
                 Consider the following insecure Python code:
+            """.trimIndent(),
+            modifier = Modifier.padding(vertical = 8.dp)
+        )
 
-                ```python
+        SelectionContainer {
+            BasicText(
+                text =
+                    """
                 import os
 
                 def run_command(command):
@@ -220,25 +268,31 @@ fun Lesson9Screen(navController: NavHostController) {
 
                 # Malicious input
                 run_command('rm -rf /')
-                ```
 
-                In this example, if user input is passed directly to `run_command()`, it could lead to severe consequences.
+                #In this example, if user input is passed directly to `run_command()`, it could lead to severe consequences.
 
                 ### Preventing RCE
-                Always sanitize and validate user inputs before executing them:
+                #Always sanitize and validate user inputs before executing them:
 
-                ```python
                 import subprocess
 
                 def run_command(command):
                     safe_command = subprocess.run(command, shell=False)
                     return safe_command
-                ```
 
-                Here, using `subprocess.run` with `shell=False` ensures that user input is not executed as a command line string.
-            """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
-        )
+                # Here, using `subprocess.run` with `shell=False` ensures that user input is not executed as a command line string.
+                    """.trimIndent(),
+
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
 
         // File Upload Vulnerabilities Section
         Text(
@@ -253,8 +307,13 @@ fun Lesson9Screen(navController: NavHostController) {
 
                 ### Python Example of a Vulnerable File Upload
                 Here's a Flask app vulnerable to file upload attacks:
+            """.trimIndent(),
+            modifier = Modifier.padding(vertical = 8.dp)
+        )
 
-                ```python
+        SelectionContainer {
+            BasicText(
+                text = """
                 from flask import Flask, request
 
                 app = Flask(__name__)
@@ -267,14 +326,12 @@ fun Lesson9Screen(navController: NavHostController) {
 
                 if __name__ == '__main__':
                     app.run()
-                ```
 
-                Attackers could upload a malicious script that gets executed on the server.
+                # Attackers could upload a malicious script that gets executed on the server.
 
                 ### Preventing File Upload Vulnerabilities
-                Always validate file uploads:
+                # Always validate file uploads:
 
-                ```python
                 import os
                 from flask import Flask, request, redirect
 
@@ -297,10 +354,17 @@ fun Lesson9Screen(navController: NavHostController) {
 
                 if __name__ == '__main__':
                     app.run()
-                ```
-            """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
-        )
+                """.trimIndent(),
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
 
         // Session Hijacking Section
         Text(
@@ -315,8 +379,14 @@ fun Lesson9Screen(navController: NavHostController) {
 
                 ### Python Example of Session Hijacking
                 Consider this Flask session management example:
+                Ensure that your application uses HTTPS and sets secure session cookies to prevent hijacking.
+            """.trimIndent(),
+            modifier = Modifier.padding(vertical = 8.dp)
+        )
 
-                ```python
+        SelectionContainer {
+            BasicText(
+                text = """
                 from flask import Flask, session
 
                 app = Flask(__name__)
@@ -335,14 +405,12 @@ fun Lesson9Screen(navController: NavHostController) {
 
                 if __name__ == '__main__':
                     app.run()
-                ```
-
-                Attackers could steal the session token from the user's cookies.
+                    
+                # Attackers could steal the session token from the user's cookies.
 
                 ### Preventing Session Hijacking
-                Implement secure session management:
+                # Implement secure session management:
 
-                ```python
                 from flask import Flask, session, request, redirect
 
                 app = Flask(__name__)
@@ -366,12 +434,19 @@ fun Lesson9Screen(navController: NavHostController) {
 
                 if __name__ == '__main__':
                     app.run(ssl_context=('cert.pem', 'key.pem'))
-                ```
+                    
+                """.trimIndent(),
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
 
-                Ensure that your application uses HTTPS and sets secure session cookies to prevent hijacking.
-            """.trimIndent(),
-            modifier = Modifier.padding(vertical = 8.dp)
-        )
         Spacer(modifier = Modifier.height(32.dp))
 
         // Button to navigate to the next lesson

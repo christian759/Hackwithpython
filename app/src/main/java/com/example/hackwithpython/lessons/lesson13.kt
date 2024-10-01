@@ -1,16 +1,23 @@
 package com.example.hackwithpython.lessons
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.ui.Modifier
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.hackwithpython.HackerBlack
 
 @Composable
 fun Lesson13Screen(navController: NavController) {
@@ -117,9 +124,10 @@ fun Lesson13Screen(navController: NavController) {
             style = androidx.compose.material3.MaterialTheme.typography.headlineMedium,
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        Text(
-            text = """
-                ```python
+
+        SelectionContainer {
+            BasicText(
+                text = """ 
                 from pynput import keyboard
                 import logging
 
@@ -142,8 +150,20 @@ fun Lesson13Screen(navController: NavController) {
                 # Set up the listener
                 with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
                     listener.join()
-                ```
+                """.trimIndent(),
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
 
+        Text(
+            text = """
                 In this code:
                 - We import the necessary modules, including `keyboard` from `pynput` and `logging` for output.
                 - The `logging.basicConfig` function sets up the log file and format.
