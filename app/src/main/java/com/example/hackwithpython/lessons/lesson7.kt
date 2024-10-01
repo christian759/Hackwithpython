@@ -1,15 +1,22 @@
 package com.example.hackwithpython.lessons
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.hackwithpython.HackerBlack
+import com.example.hackwithpython.HackerWhite
 
 @Composable
 fun Lesson7Screen(navController: NavController) {
@@ -83,7 +90,7 @@ fun Lesson7Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(8.dp))
 
         // Basic API Request Code
-        Text(
+        BasicText(
             text = """
                 ```python
                 import requests
@@ -102,9 +109,14 @@ fun Lesson7Screen(navController: NavController) {
                 - Sending a GET request to an API endpoint.
                 - Checking the response status and printing the data if successful.
             """.trimIndent(),
-            style = MaterialTheme.typography.bodySmall,
-            textAlign = TextAlign.Start,
-            color = MaterialTheme.colorScheme.onBackground
+            style = TextStyle(
+                fontFamily = FontFamily.Monospace,
+                fontSize = 14.sp,
+                color = HackerWhite
+            ),
+            modifier = Modifier
+                .padding(12.dp)
+                .horizontalScroll(rememberScrollState())
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -130,7 +142,7 @@ fun Lesson7Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(8.dp))
 
         // API with Parameters Example
-        Text(
+        BasicText(
             text = """
                 ```python
                 import requests
@@ -153,9 +165,14 @@ fun Lesson7Screen(navController: NavController) {
                 - Parameters allow you to specify what data you want.
                 - Always sanitize your input to avoid issues like SQL injection.
             """.trimIndent(),
-            style = MaterialTheme.typography.bodySmall,
-            textAlign = TextAlign.Start,
-            color = MaterialTheme.colorScheme.onBackground
+            style = TextStyle(
+                fontFamily = FontFamily.Monospace,
+                fontSize = 14.sp,
+                color = HackerWhite
+            ),
+            modifier = Modifier
+                .padding(12.dp)
+                .horizontalScroll(rememberScrollState())
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -181,7 +198,7 @@ fun Lesson7Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(8.dp))
 
         // Example with API Key
-        Text(
+        BasicText(
             text = """
                 ```python
                 headers = {
@@ -200,9 +217,14 @@ fun Lesson7Screen(navController: NavController) {
                 - **Exposed API keys**: These can be found in public repositories or via misconfigurations. 
                 - **Replay attacks**: Intercepting requests can allow attackers to re-use valid sessions.
             """.trimIndent(),
-            style = MaterialTheme.typography.bodySmall,
-            textAlign = TextAlign.Start,
-            color = MaterialTheme.colorScheme.onBackground
+            style = TextStyle(
+                fontFamily = FontFamily.Monospace,
+                fontSize = 14.sp,
+                color = HackerWhite
+            ),
+            modifier = Modifier
+                .padding(12.dp)
+                .horizontalScroll(rememberScrollState())
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -228,7 +250,7 @@ fun Lesson7Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(8.dp))
 
         // Rate Limiting Code Example
-        Text(
+        BasicText(
             text = """
                 ```python
                 import requests
@@ -243,9 +265,14 @@ fun Lesson7Screen(navController: NavController) {
 
                 Use such techniques with caution. Continuous hitting of endpoints could lead to IP bans or legal action.
             """.trimIndent(),
-            style = MaterialTheme.typography.bodySmall,
-            textAlign = TextAlign.Start,
-            color = MaterialTheme.colorScheme.onBackground
+            style = TextStyle(
+                fontSize = 14.sp,
+                fontFamily = FontFamily.Monospace,
+                color = HackerWhite
+            ),
+            modifier = Modifier
+                .padding(12.dp)
+                .horizontalScroll(rememberScrollState())
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -271,7 +298,7 @@ fun Lesson7Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(8.dp))
 
         // Error Handling Code Example
-        Text(
+       BasicText(
             text = """
                 ```python
                 try:
@@ -289,9 +316,14 @@ fun Lesson7Screen(navController: NavController) {
                 - **Error messages** can reveal backend structures or sensitive data, making them useful for attackers.
                 - Always handle exceptions properly to avoid leaking information.
             """.trimIndent(),
-            style = MaterialTheme.typography.bodySmall,
-            textAlign = TextAlign.Start,
-            color = MaterialTheme.colorScheme.onBackground
+            style = TextStyle(
+                fontFamily = FontFamily.Monospace,
+                fontSize = 14.sp,
+                color = HackerBlack
+            ),
+            modifier = Modifier
+                .padding(12.dp)
+                .horizontalScroll(rememberScrollState())
         )
 
         Spacer(modifier = Modifier.height(16.dp))

@@ -1,16 +1,24 @@
 package com.example.hackwithpython.lessons
 
+import androidx.compose.foundation.border
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.hackwithpython.HackerBlack
 
 @Composable
 fun Lesson1Screen(navController: NavController, modifier: Modifier = Modifier) {
@@ -119,10 +127,10 @@ fun Lesson1Screen(navController: NavController, modifier: Modifier = Modifier) {
             color = MaterialTheme.colorScheme.onBackground // White text
         )
         Spacer(modifier = Modifier.height(8.dp))
-        Text(
-            text = """
-                ```python
-                import socket
+
+        val socket_code =
+            """
+            import socket
 
                 def scan(ip):
                     try:
@@ -139,12 +147,21 @@ fun Lesson1Screen(navController: NavController, modifier: Modifier = Modifier) {
                     ip = f"192.168.1.{i}"
                     if scan(ip):
                         print(f"Device found at {ip}")
-                ```
-            """.trimIndent(),
-            style = MaterialTheme.typography.bodySmall,
-            textAlign = TextAlign.Start,
-            color = MaterialTheme.colorScheme.onBackground // White text
-        )
+                        
+        """.trimIndent()
+        SelectionContainer {
+            BasicText(
+                text = socket_code,
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+                modifier = modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
 
         Spacer(modifier = Modifier.height(24.dp))
 

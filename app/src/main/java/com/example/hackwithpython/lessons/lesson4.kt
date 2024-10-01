@@ -55,7 +55,7 @@ fun Lesson4Screen(navController: NavController) {
             text = """
                 To get started, you need to install Python on your system. Follow these steps:
                 
-                1. **Visit the Official Website**: Go to the [Python website](https://www.python.org/downloads/).
+                1. **Visit the Official Website**: Go to the Python website - (https://www.python.org/downloads/).
                 2. **Download the Installer**: Choose the latest version of Python for your operating system (Windows, macOS, Linux).
                 3. **Run the Installer**: Follow the prompts. Ensure you check the box that says "Add Python to PATH."
                 4. **Verify Installation**: Open your terminal or command prompt and type:
@@ -83,8 +83,8 @@ fun Lesson4Screen(navController: NavController) {
             text = """
                 An IDE helps streamline your coding process with features like syntax highlighting, debugging, and code completion. Here are a few popular options:
                 
-                - **PyCharm**: A powerful IDE with many features tailored for Python development. You can download it from [JetBrains](https://www.jetbrains.com/pycharm/).
-                - **Visual Studio Code (VS Code)**: A lightweight and versatile editor that supports Python through extensions. Download it from [Visual Studio Code](https://code.visualstudio.com/).
+                - **PyCharm**: A powerful IDE with many features tailored for Python development. You can download it from JetBrains - (https://www.jetbrains.com/pycharm/).
+                - **Visual Studio Code (VS Code)**: A lightweight and versatile editor that supports Python through extensions. Download it from Visual Studio Code - (https://code.visualstudio.com/).
                 - **Jupyter Notebook**: Great for data science and prototyping. Install it using pip:
                 ```
                 pip install notebook

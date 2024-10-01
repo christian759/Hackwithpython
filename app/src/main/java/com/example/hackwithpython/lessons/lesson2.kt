@@ -1,15 +1,23 @@
 package com.example.hackwithpython.lessons
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.hackwithpython.HackerBlack
+import com.example.hackwithpython.HackerWhite
 
 @Composable
 fun Lesson2Screen(navController: NavController) {
@@ -81,10 +89,11 @@ fun Lesson2Screen(navController: NavController) {
                 Python is an excellent language for network programming. Using Python, you can create network connections, monitor traffic, and automate attacks.
 
                 Here’s a Python script for scanning open ports on a server:
-
-                ```python
+                 
+                """.trimIndent()
+        )
+        val socket_code2 = """
                 import socket
-
                 def scan_ports(host):
                     open_ports = []
                     for port in range(1, 1025):  # Scanning ports 1 to 1024
@@ -102,8 +111,22 @@ fun Lesson2Screen(navController: NavController) {
                 host = '127.0.0.1'  # Example: scan localhost
                 open_ports = scan_ports(host)
                 print(f"Open ports on {host}: {open_ports}")
-                ```
+                """.trimIndent()
 
+        SelectionContainer {
+            BasicText(
+                text = socket_code2,
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerWhite
+                ),
+                modifier =Modifier.padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
+
+        Text(text = """
                 ### Explanation:
                 - The script uses the Python `socket` module to scan ports on a target server.
                 - The function `scan_ports` tries to connect to ports between 1 and 1024. If it connects, the port is open.
@@ -131,24 +154,39 @@ fun Lesson2Screen(navController: NavController) {
                 Python libraries like **scapy** and **paramiko** are powerful for advanced network manipulation and automation.
 
                 ### Example of Using `scapy` to Craft and Send Packets:
+            """.trimIndent())
 
-                ```python
+        val scapy_code =
+            """
+                ```python```
                 from scapy.all import *
 
                 packet = IP(dst="8.8.8.8") / ICMP()
                 send(packet)
                 print("Packet sent to 8.8.8.8")
-                ```
+            """.trimIndent()
 
+        SelectionContainer {
+            BasicText(text = scapy_code,
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
+
+        Text(text =
+            """
                 - This script sends an ICMP (ping) packet to Google's public DNS server (8.8.8.8).
                 - `scapy` allows you to create custom packets and send them over the network.
 
                 Use this knowledge to explore networks, scan vulnerabilities, and understand how devices communicate. 
                 In the next lesson, we'll cover more about how to interact with network services and how Python helps automate that interaction.
-            """.trimIndent(),
-            style = MaterialTheme.typography.bodyLarge,
-            textAlign = TextAlign.Left,
-            modifier = Modifier.padding(8.dp)
+            """.trimIndent()
         )
 
         Spacer(modifier = Modifier.height(32.dp))

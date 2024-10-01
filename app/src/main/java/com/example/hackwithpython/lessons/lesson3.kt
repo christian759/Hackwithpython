@@ -1,7 +1,10 @@
 package com.example.hackwithpython.lessons
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -10,7 +13,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.hackwithpython.HackerBlack
+import com.example.hackwithpython.HackerWhite
 
 @Composable
 fun Lesson3Screen(navController: NavController) {
@@ -56,14 +64,31 @@ fun Lesson3Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            text = "Understanding Python's syntax is crucial for writing effective scripts. Python uses indentation to define blocks of code. Unlike many other programming languages that use braces or keywords, Python relies on whitespace, which enhances readability.\n" +
-                    "Example:\n" +
-                    "```python\n" +
-                    "if 5 > 2:\n" +
-                    "    print(\"Five is greater than two!\")\n" +
-                    "```",
+            text = """
+                Understanding Python's syntax is crucial for writing " +
+                effective scripts. Python uses indentation to define blocks of code. 
+                Unlike many other programming languages that use braces or keywords, Python relies on whitespace, which enhances readability
+                Example:""",
             style = MaterialTheme.typography.bodyMedium
         )
+
+        SelectionContainer {
+            BasicText(text =
+                """
+                    if 5 > 2
+                        print(\"Five is greater than two!\")
+                """.trimIndent(),
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerWhite
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
+
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
@@ -90,16 +115,34 @@ fun Lesson3Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            text = "Control structures help you direct the flow of your program. Key types include:\n" +
-                    "- If Statements: Execute code based on conditions.\n" +
-                    "- Loops: Repeat blocks of code.\n" +
-                    "Example of a loop:\n" +
-                    "```python\n" +
-                    "for i in range(5):\n" +
-                    "    print(i)\n" +
-                    "```",
+            text = """
+                Control structures help you direct the flow of your program. Key types include:\n
+                - If Statements: Execute code based on conditions.\n" +
+                - Loops: Repeat blocks of code.\n
+                Example of a loop:\n
+                """,
             style = MaterialTheme.typography.bodyMedium
         )
+
+        SelectionContainer {
+            BasicText(
+                text = """
+                    user_input = input("Enter a keyword: ")
+                    if user_input.lower() == "hacker":
+                       print("Access Granted!")
+                    else: 
+                        print("Access Denied!")
+                """.trimIndent(),style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerBlack
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
+
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
@@ -109,14 +152,28 @@ fun Lesson3Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            text = "Functions encapsulate code into reusable blocks.\n" +
-                    "Example:\n" +
-                    "```python\n" +
-                    "def greet(name):\n" +
-                    "    return f\"Hello, {name}!\"\n" +
-                    "```",
+            text = "Functions encapsulate code into reusable blocks." +
+                    "Example:\n" ,
             style = MaterialTheme.typography.bodyMedium
         )
+
+        SelectionContainer {
+            BasicText(
+                text = """
+                    def greet(name): +
+                        return f"hello {name}"
+                    """.trimIndent(),
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerWhite
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
+
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
@@ -126,13 +183,27 @@ fun Lesson3Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            text = "You can import libraries to extend functionality. For example, use the `math` library for mathematical functions:\n" +
-                    "```python\n" +
-                    "import math\n" +
-                    "print(math.sqrt(16))  # Outputs: 4.0\n" +
-                    "```",
+            text = "You can import libraries to extend functionality. For example, use the `math` library for mathematical functions:\n",
             style = MaterialTheme.typography.bodyMedium
         )
+
+        SelectionContainer {
+            BasicText(
+             text = """
+                     import math
+                     print(math.sqrt(16))  # Outputs: 4.0\n"       
+                    """.trimIndent(),
+                style = TextStyle(
+                    fontSize = 14.sp,
+                    fontFamily = FontFamily.Monospace,
+                    color = HackerBlack
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
+
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
@@ -142,16 +213,29 @@ fun Lesson3Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            text = "Now let’s combine what we’ve learned into a simple script that takes user input and checks if it’s a hacker keyword.\n" +
-                    "```python\n" +
-                    "user_input = input(\"Enter a keyword: \")\n" +
-                    "if user_input.lower() == \"hacker\":\n" +
-                    "    print(\"Access Granted!\")\n" +
-                    "else:\n" +
-                    "    print(\"Access Denied!\")\n" +
-                    "```",
+            text = "Now let’s combine what we’ve learned into a simple script that takes user input and checks if it’s a hacker keyword.\n",
             style = MaterialTheme.typography.bodyMedium
         )
+
+        SelectionContainer {
+            BasicText(
+                text = """
+                    user_input = input(\"Enter a keyword: \")
+                    if user_input.lower() == "hacker": 
+                        print("Access Granted!") +
+                    else:
+                        print("Access Denied!")
+                """.trimIndent(),
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerWhite
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
 
         Button(onClick = { navController.navigate("lesson4") }) {
             Text(text = "Next Lesson")

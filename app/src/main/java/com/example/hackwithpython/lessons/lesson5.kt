@@ -1,15 +1,23 @@
 package com.example.hackwithpython.lessons
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.hackwithpython.HackerBlack
+import com.example.hackwithpython.HackerWhite
 
 @Composable
 fun Lesson5Screen(navController: NavController) {
@@ -134,32 +142,38 @@ fun Lesson5Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(8.dp))
 
         // Code Example
-        Text(
-            text = """
-                ```python
-                import requests
-                from bs4 import BeautifulSoup
-
-                url = "https://example.com"
-                response = requests.get(url)
-
-                # Parsing the HTML content
-                soup = BeautifulSoup(response.content, "html.parser")
-
-                # Extracting data (example: extracting all links from the page)
-                for link in soup.find_all('a'):
-                    print(link.get('href'))
-                ```
-
-                **Explanation**:
-                - We use `requests.get()` to fetch the HTML content of the webpage.
-                - `BeautifulSoup` is used to parse the HTML, making it easier to navigate and extract specific elements.
-                - The `find_all('a')` method extracts all anchor tags (`<a>`), which are typically used for links.
-            """.trimIndent(),
-            style = MaterialTheme.typography.bodySmall,
-            textAlign = TextAlign.Start,
-            color = MaterialTheme.colorScheme.onBackground
-        )
+        SelectionContainer{
+            BasicText(text =
+                """
+                    import requests
+                    from bs4 import BeautifulSoup
+    
+                    url = "https://example.com"
+                    response = requests.get(url)
+    
+                    # Parsing the HTML content
+                    soup = BeautifulSoup(response.content, "html.parser")
+    
+                    # Extracting data (example: extracting all links from the page)
+                    for link in soup.find_all('a'):
+                        print(link.get('href'))
+    
+                    #Explanation:
+                    #- We use `requests.get()` to fetch the HTML content of the webpage.
+                    #- `BeautifulSoup` is used to parse the HTML, making it easier to navigate and extract specific elements.
+                    #- The `find_all('a')` method extracts all anchor tags (`<a>`), which are typically used for links
+                """.trimIndent()
+                ,
+                style = TextStyle(
+                    fontSize = 14.sp,
+                    fontFamily = FontFamily.Monospace,
+                    color = HackerWhite
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -184,33 +198,40 @@ fun Lesson5Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(8.dp))
 
         // Selenium Code Example
-        Text(
-            text = """
-                ```python
-                from selenium import webdriver
-
-                # Create a new instance of the Firefox driver
-                driver = webdriver.Firefox()
-
-                # Navigate to the webpage
-                driver.get("https://example.com")
-
-                # Extract dynamic content
-                element = driver.find_element_by_xpath("//div[@id='content']")
-                print(element.text)
-
-                driver.quit()
-                ```
-
-                **Explanation**:
-                - `webdriver.Firefox()` initializes a new Firefox browser.
-                - `get()` loads the specified URL.
-                - `find_element_by_xpath()` locates an element using an XPath query, useful for extracting data from dynamically loaded sections.
-            """.trimIndent(),
-            style = MaterialTheme.typography.bodySmall,
-            textAlign = TextAlign.Start,
-            color = MaterialTheme.colorScheme.onBackground
-        )
+        SelectionContainer {
+            BasicText(
+                text = """
+                    ```python
+                    from selenium import webdriver
+    
+                    # Create a new instance of the Firefox driver
+                    driver = webdriver.Firefox()
+    
+                    # Navigate to the webpage
+                    driver.get("https://example.com")
+    
+                    # Extract dynamic content
+                    element = driver.find_element_by_xpath("//div[@id='content']")
+                    print(element.text)
+    
+                    driver.quit()
+                    ```
+    
+                    **Explanation**:
+                    - `webdriver.Firefox()` initializes a new Firefox browser.
+                    - `get()` loads the specified URL.
+                    - `find_element_by_xpath()` locates an element using an XPath query, useful for extracting data from dynamically loaded sections.
+                """.trimIndent(),
+                style = TextStyle(
+                    fontSize = 14.sp,
+                    fontFamily = FontFamily.Monospace,
+                    color = HackerWhite
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
 
         Spacer(modifier = Modifier.height(16.dp))
 

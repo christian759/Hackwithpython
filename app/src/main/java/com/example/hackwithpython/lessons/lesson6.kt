@@ -1,15 +1,23 @@
 package com.example.hackwithpython.lessons
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.modifier.modifierLocalMapOf
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.hackwithpython.HackerWhite
 
 @Composable
 fun Lesson6Screen(navController: NavController) {
@@ -65,34 +73,40 @@ fun Lesson6Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(8.dp))
 
         // Selenium Example for Dynamic Content
-        Text(
-            text = """
-                ```python
-                from selenium import webdriver
-                from selenium.webdriver.common.by import By
-
-                driver = webdriver.Chrome()
-
-                driver.get("https://example.com")
-
-                # Wait for the page to load
-                driver.implicitly_wait(10)
-
-                # Extract data
-                dynamic_element = driver.find_element(By.XPATH, "//div[@id='dynamic-content']")
-                print(dynamic_element.text)
-
-                driver.quit()
-                ```
-
-                In this code:
-                - We use Selenium's `find_element` function to locate the dynamically loaded content.
-                - The script waits for the page to load, ensuring that JavaScript has populated the required elements.
-            """.trimIndent(),
-            style = MaterialTheme.typography.bodySmall,
-            textAlign = TextAlign.Start,
-            color = MaterialTheme.colorScheme.onBackground
-        )
+        SelectionContainer {
+            BasicText(
+                text =
+                """
+                    from selenium import webdriver
+                    from selenium.webdriver.common.by import By
+    
+                    driver = webdriver.Chrome()
+    
+                    driver.get("https://example.com")
+    
+                    # Wait for the page to load
+                    driver.implicitly_wait(10)
+    
+                    # Extract data
+                    dynamic_element = driver.find_element(By.XPATH, "//div[@id='dynamic-content']")
+                    print(dynamic_element.text)
+    
+                    driver.quit()
+    
+                    #In this code:
+                    #- We use Selenium's `find_element` function to locate the dynamically loaded content.
+                    #- The script waits for the page to load, ensuring that JavaScript has populated the required elements.
+                """.trimIndent(),
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerWhite
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+                )
+            }
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -117,30 +131,38 @@ fun Lesson6Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(8.dp))
 
         // Session Management Example
-        Text(
-            text = """
-                ```python
-                import requests
-
-                session = requests.Session()
-
-                # Log in to a website (POST request)
-                login_url = "https://example.com/login"
-                payload = {"username": "user", "password": "pass"}
-                session.post(login_url, data=payload)
-
-                # Scrape data while logged in
-                response = session.get("https://example.com/dashboard")
-                print(response.content)
-                ```
-
-                - The `session` object stores cookies and handles requests.
-                - Once logged in, you can scrape any page that requires authentication.
-            """.trimIndent(),
-            style = MaterialTheme.typography.bodySmall,
-            textAlign = TextAlign.Start,
-            color = MaterialTheme.colorScheme.onBackground
-        )
+        SelectionContainer {
+            BasicText(
+                text =
+                """
+                    import requests
+    
+                    session = requests.Session()
+    
+                    # Log in to a website (POST request)
+                    
+                    login_url = "https://example.com/login"
+                    payload = {"username": "user", "password": "pass"}
+                    session.post(login_url, data=payload)
+    
+                    # Scrape data while logged in
+                    
+                    response = session.get("https://example.com/dashboard")
+                    print(response.content)
+    
+                    #- The `session` object stores cookies and handles requests.
+                    #- Once logged in, you can scrape any page that requires authentication.
+                """.trimIndent(),
+                style = TextStyle(
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 14.sp,
+                    color = HackerWhite
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -187,38 +209,45 @@ fun Lesson6Screen(navController: NavController) {
         Spacer(modifier = Modifier.height(8.dp))
 
         // Code Example with Rate Limiting and User-Agent Rotation
-        Text(
-            text = """
-                ```python
-                import requests
-                import random
-                import time
-
-                user_agents = [
-                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-                    "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0",
-                    # Add more user agents
-                ]
-
-                url = "https://example.com"
-
-                for i in range(10):  # Scraping 10 pages
-                    headers = {"User-Agent": random.choice(user_agents)}
-                    response = requests.get(url, headers=headers)
-                    print(response.status_code)
-
-                    # Rate limit
-                    time.sleep(random.uniform(3, 6))  # Sleep for 3 to 6 seconds
-                ```
-
-                In this code:
-                - We randomly choose a user agent for each request to avoid detection.
-                - We also introduce a delay using `time.sleep()` to slow down our scraping and mimic human behavior.
-            """.trimIndent(),
-            style = MaterialTheme.typography.bodySmall,
-            textAlign = TextAlign.Start,
-            color = MaterialTheme.colorScheme.onBackground
-        )
+        SelectionContainer {
+            BasicText(
+                text = """
+                    ```python
+                    import requests
+                    import random
+                    import time
+    
+                    user_agents = [
+                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+                        "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0",
+                        # Add more user agents
+                    ]
+    
+                    url = "https://example.com"
+    
+                    for i in range(10):  # Scraping 10 pages
+                        headers = {"User-Agent": random.choice(user_agents)}
+                        response = requests.get(url, headers=headers)
+                        print(response.status_code)
+    
+                        # Rate limit
+                        time.sleep(random.uniform(3, 6))  # Sleep for 3 to 6 seconds
+                    ```
+    
+                    In this code:
+                    - We randomly choose a user agent for each request to avoid detection.
+                    - We also introduce a delay using `time.sleep()` to slow down our scraping and mimic human behavior.
+                """.trimIndent(),
+                style = TextStyle(
+                    fontSize = 14.sp,
+                    fontFamily = FontFamily.Monospace,
+                    color = HackerWhite
+                ),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .horizontalScroll(rememberScrollState())
+            )
+        }
 
         Spacer(modifier = Modifier.height(16.dp))
 
