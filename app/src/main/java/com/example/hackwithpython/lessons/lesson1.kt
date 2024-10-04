@@ -8,12 +8,11 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowCircleLeft
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -22,7 +21,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.hackwithpython.HackerBlack
-import com.example.hackwithpython.HackerGreen
 import com.example.hackwithpython.HackerWhite
 
 @Composable
@@ -31,6 +29,7 @@ fun Lesson1Screen(navController: NavController, modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxSize()
             .padding(16.dp)
+            .background(HackerBlack)
             .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.Start
@@ -40,18 +39,15 @@ fun Lesson1Screen(navController: NavController, modifier: Modifier = Modifier) {
             style = MaterialTheme.typography.headlineSmall,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Start,
-            color = MaterialTheme.colorScheme.primary // Use a bright green color
+            color = HackerWhite
         )
-        Spacer(modifier = Modifier.width(16.dp))
-
-
+        VerticalDivider(thickness = 20.dp, color = Color.White)
         Spacer(modifier = Modifier.height(16.dp))
 
         // Introduction to hacking
         Text(
             text = "In this lesson, we will explore the basics of hacking, types of hackers, and why Python is an ideal language for hacking.",
             style = MaterialTheme.typography.bodyMedium,
-            textAlign = TextAlign.Start,
             color = MaterialTheme.colorScheme.onBackground // White text on a black background
         )
 

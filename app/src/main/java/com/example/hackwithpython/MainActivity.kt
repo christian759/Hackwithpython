@@ -10,12 +10,6 @@ import com.example.hackwithpython.ui.theme.HackWithPythonTheme
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Work
-import androidx.compose.material.icons.filled.Book
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -32,7 +26,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold { innerPadding ->
                     NavigationGraph(
                         navController = navController,
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier.padding(innerPadding).background(HackerBlack)
                     )
                 }
             }
@@ -43,7 +37,7 @@ class MainActivity : ComponentActivity() {
 
 
 @Composable
-fun NavigationGraph(navController: NavHostController, modifier: Modifier = Modifier) {
+fun NavigationGraph(navController: NavHostController, modifier: Modifier = Modifier.background(HackerBlack)) {
     NavHost(navController, startDestination = "home", modifier = modifier) {
         composable("home") { homeScreen(navController) }
 

@@ -1,7 +1,7 @@
 package com.example.hackwithpython.lessons
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
@@ -9,12 +9,14 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavController
 import com.example.hackwithpython.HackerBlack
 import com.example.hackwithpython.HackerGreen
 import com.example.hackwithpython.HackerWhite
+import com.example.hackwithpython.gradientBackground
 
 
 @Composable
@@ -22,12 +24,12 @@ fun lessonsScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Lessons", color = HackerBlack, style = MaterialTheme.typography.h5)},
-                backgroundColor = HackerWhite
+                title = { Text("Lessons", color = HackerBlack, style = MaterialTheme.typography.h5, fontWeight = FontWeight(600))},
+                backgroundColor = HackerGreen
             )
         },
         content = { padding ->
-            lessonsPart(navController, Modifier.padding(padding).background(HackerWhite))
+            lessonsPart(navController, Modifier.padding(padding).background(gradientBackground))
         }
     )
 }
@@ -38,14 +40,15 @@ fun lessonsPart(navController: NavController, modifier: Modifier) {
         modifier = modifier
             .fillMaxSize()
             .padding(16.dp)
-            .background(color = HackerWhite),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
+            .background(gradientBackground)
+            .verticalScroll(rememberScrollState()),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         for (lesson  in lessons){
             lessonItem(lesson) {
                 navController.navigate("lesson${lesson.id}")
             }
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(5.dp))
 
         }
     }
@@ -56,24 +59,24 @@ fun lessonsPart(navController: NavController, modifier: Modifier) {
 fun lessonItem(lesson: Lesson, onClick: () -> Unit) {
     Card(
         elevation = 4.dp,
-        modifier = Modifier.fillMaxWidth(),
-        backgroundColor = HackerGreen
+        modifier = Modifier.fillMaxWidth()
+            .clickable(onClick = onClick)
+            .shadow(10.dp),
+        backgroundColor = HackerBlack
     ) {
         Column(
-            modifier = Modifier
-                .padding(16.dp)
-                .clickable(onClick = onClick),
+            modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Text(
                 text = lesson.title,
                 style = MaterialTheme.typography.h6,
-                color = HackerBlack
+                color = HackerWhite
             )
             Text(
                 text = lesson.description,
                 style = MaterialTheme.typography.body2,
-                color = HackerBlack
+                color = HackerWhite
             )
         }
     }

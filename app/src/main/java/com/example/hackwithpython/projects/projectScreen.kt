@@ -1,17 +1,18 @@
 package com.example.hackwithpython.projects
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.hackwithpython.HackerBlack
 import com.example.hackwithpython.HackerGreen
 import com.example.hackwithpython.HackerWhite
-
+import com.example.hackwithpython.gradientBackground
 
 
 @Composable
@@ -19,12 +20,12 @@ fun ProjectScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Projects", color = HackerBlack, style = MaterialTheme.typography.h5 )},
-                backgroundColor = HackerWhite
+                title = { Text("Projects", color = HackerBlack, style = MaterialTheme.typography.h5, fontWeight = FontWeight(600) )},
+                backgroundColor = HackerGreen
             )
         },
         content = { padding ->
-            ProjectList(navController, Modifier.padding(padding))
+            ProjectList(navController, Modifier.padding(padding).background(gradientBackground))
         }
     )
 }
@@ -35,14 +36,15 @@ fun ProjectList(navController: NavController, modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxSize()
             .padding(16.dp)
-            .background(color = HackerWhite),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
+            .background(gradientBackground)
+            .verticalScroll(rememberScrollState()),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         for (project in hackingProjects) {
             ProjectItem(project) {
                 navController.navigate("project${project.id}")
             }
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(5.dp))
 
         }
     }
@@ -53,8 +55,9 @@ fun ProjectItem(project: HackingProject, onClick: () -> Unit) {
     Card(
         elevation = 4.dp,
         modifier = Modifier.fillMaxWidth()
-            .clickable(onClick = onClick),
-        backgroundColor = HackerGreen
+            .clickable(onClick = onClick)
+            .shadow(10.dp),
+        backgroundColor = HackerBlack
     ) {
         Column(
             modifier = Modifier.padding(16.dp),
@@ -63,13 +66,13 @@ fun ProjectItem(project: HackingProject, onClick: () -> Unit) {
             Text(
                 text = project.name,
                 style = MaterialTheme.typography.h6,
-                color = HackerBlack
+                color = HackerWhite
             )
             Text(
                 text = project.description,
                 style = MaterialTheme.typography.body2,
-                color = HackerBlack
-                )
+                color = HackerWhite
+            )
         }
     }
 }
