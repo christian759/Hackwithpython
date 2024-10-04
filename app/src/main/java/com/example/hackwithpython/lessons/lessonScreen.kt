@@ -34,22 +34,26 @@ fun lessonsScreen(navController: NavController) {
 
 @Composable
 fun lessonsPart(navController: NavController, modifier: Modifier) {
-    LazyColumn(
+    Column(
         modifier = modifier
             .fillMaxSize()
             .padding(16.dp)
             .background(color = HackerWhite),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        items(lessons.size){ index ->
-            lessonItem(lesson = lessons[index], navController = navController)
+        for (lesson  in lessons){
+            lessonItem(lesson) {
+                navController.navigate("lesson${lesson.id}")
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+
         }
     }
 }
 
 
 @Composable
-fun lessonItem(lesson: Lesson, navController: NavController) {
+fun lessonItem(lesson: Lesson, onClick: () -> Unit) {
     Card(
         elevation = 4.dp,
         modifier = Modifier.fillMaxWidth(),
@@ -58,7 +62,7 @@ fun lessonItem(lesson: Lesson, navController: NavController) {
         Column(
             modifier = Modifier
                 .padding(16.dp)
-                .clickable(onClick = {navController.navigate("Lesson${lesson.id}")} ),
+                .clickable(onClick = onClick),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Text(
